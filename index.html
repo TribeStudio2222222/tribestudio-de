@@ -122,7 +122,7 @@
 
     /* ===== HERO ===== */
     #hero {
-      height: 100vh; position: relative; overflow: hidden;
+      height: 100vh; position: sticky; top: 0; z-index: 0; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
       background: var(--black);
       padding: 0 5rem;
@@ -243,6 +243,7 @@
 
     /* ===== SHARED ===== */
     section { padding: 8rem 5rem; }
+    section:not(#hero), footer { position: relative; z-index: 1; }
     .section-tag {
       display: inline-block; font-family: 'JetBrains Mono', monospace;
       font-size: 0.65rem; font-weight: 500;
@@ -1270,13 +1271,6 @@
     .to('.hero-subtext',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.5)
     .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.7)
     .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.9);
-
-  lenis.on('scroll', ({ scroll }) => {
-    const hi = document.querySelector('.hero-inner');
-    const hb = document.getElementById('heroBg');
-    if (hi) hi.style.transform = `translateY(${scroll * 0.22}px)`;
-    if (hb) hb.style.transform = `translateY(${scroll * 0.10}px)`;
-  });
 
   const st = { start: 'top 82%', toggleActions: 'play none none none' };
 
