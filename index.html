@@ -301,11 +301,11 @@
       flex: 1; min-width: 0; border-radius: 18px;
       overflow: hidden; position: relative; cursor: pointer;
       background: var(--black);
-      transition: flex 0.58s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-      opacity: 0.55;
+      transition: flex 0.58s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+      filter: brightness(0.55);
     }
-    .acc-card.active { flex: 4; cursor: default; opacity: 1; }
-    .acc-card:not(.active):hover { opacity: 0.82; }
+    .acc-card.active { flex: 4; cursor: default; filter: brightness(1); }
+    .acc-card:not(.active):hover { filter: brightness(0.75); }
     .acc-card video {
       width: 100%; height: 100%; object-fit: cover;
       display: block; pointer-events: none;
