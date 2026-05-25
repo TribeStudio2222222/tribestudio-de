@@ -127,6 +127,11 @@
       background: var(--black);
       padding: 0 5rem;
     }
+    .hero-bottom-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 38%; z-index: 0; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, var(--light) 100%);
+    }
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg-video {
       position: absolute; inset: 0;
@@ -718,6 +723,7 @@
     </video>
     <div class="hero-bg-grad"></div>
   </div>
+  <div class="hero-bottom-fade"></div>
   <div class="hero-inner">
     <div class="hero-content" id="heroContent">
       <div class="hero-location">
