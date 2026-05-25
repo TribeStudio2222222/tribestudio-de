@@ -290,45 +290,43 @@
     }
     .portfolio-cta-pill:hover { background: var(--green-deep); transform: translateY(-2px); }
 
-    .portfolio-carousel {
-      display: flex; gap: 1.25rem; align-items: stretch;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      margin: 0 -5rem; padding: 0 5rem 0.5rem;
+    .portfolio-accordion {
+      display: flex; gap: 0.875rem; margin-top: 3rem;
+      height: clamp(420px, 52vw, 620px); align-items: stretch;
     }
-    .portfolio-carousel::-webkit-scrollbar { display: none; }
-
-    .portfolio-card {
-      flex: 0 0 clamp(260px, 27vw, 400px);
-      height: clamp(380px, 48vw, 560px);
-      border-radius: 20px; scroll-snap-align: start;
+    .acc-card {
+      flex: 1; min-width: 0; border-radius: 20px;
       overflow: hidden; position: relative; cursor: pointer;
       background: var(--black);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+      opacity: 0.55;
     }
-    .portfolio-card:hover { transform: scale(1.02); box-shadow: 0 24px 60px rgba(0,0,0,0.18); }
-
-    .card-media { width: 100%; height: 100%; }
-    .portfolio-card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .portfolio-card-label {
-      position: absolute; bottom: 1rem; left: 1rem;
-      background: rgba(0,0,0,0.42);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      color: rgba(255,255,255,0.9);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; letter-spacing: 0.04em;
-      padding: 0.35rem 0.85rem; border-radius: 100px;
+    .acc-card.active { flex: 5; cursor: default; opacity: 1; }
+    .acc-card:not(.active):hover { opacity: 0.8; }
+    .acc-card video {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; pointer-events: none;
     }
-
-    .carousel-arrows { display: flex; gap: 0.75rem; justify-content: center; margin-top: 2.5rem; }
-    .carousel-btn {
-      width: 48px; height: 48px;
-      border: 1.5px solid rgba(26,26,26,0.15);
-      border-radius: 50%; background: var(--white); color: var(--text-dark);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s;
+    .acc-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 3rem 1.75rem 1.75rem;
+      background: linear-gradient(to top, rgba(10,15,12,0.85) 0%, transparent 100%);
+      opacity: 0; transition: opacity 0.45s ease 0.25s;
     }
-    .carousel-btn:hover { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); }
+    .acc-card.active .acc-overlay { opacity: 1; }
+    .acc-service {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 0.2em; color: var(--sand); text-transform: uppercase;
+      display: block; margin-bottom: 0.4rem; opacity: 0.85;
+    }
+    .acc-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: clamp(1.4rem, 2vw, 2rem); color: var(--cream);
+      line-height: 1.1; display: block; margin-bottom: 0.3rem;
+    }
+    .acc-loc {
+      font-size: 0.78rem; color: rgba(217,203,179,0.5); display: block;
+    }
 
     /* ===== ÜBER UNS ===== */
     #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
@@ -670,9 +668,10 @@
       .hero-cta-row .btn-primary,
       .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
       #portfolio { padding: 5rem 1.5rem; }
-      .portfolio-carousel { margin: 0 -1.5rem; padding: 0 1.5rem 0.5rem; }
-      .portfolio-card { flex: 0 0 clamp(240px, 78vw, 320px); height: clamp(320px, 104vw, 440px); }
-      .carousel-arrows { margin-top: 2rem; }
+      .portfolio-accordion { flex-direction: column; height: auto; gap: 0.75rem; }
+      .acc-card { flex: none; height: 90px; border-radius: 16px; }
+      .acc-card.active { height: clamp(320px, 80vw, 460px); }
+      .acc-card, .acc-card.active { transition: height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease; flex: none; }
       .process-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .pakete-grid { grid-template-columns: 1fr; }
@@ -786,47 +785,47 @@
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     Angebot holen
   </a>
-  <div class="portfolio-carousel" id="portfolioCarousel">
-    <div class="portfolio-card">
-      <div class="card-media">
-        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="10">
-          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
-        </video>
+  <div class="portfolio-accordion" id="portfolioAccordion">
+    <div class="acc-card active">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938875/Timeline_1_atlgxj.mp4" type="video/mp4">
+      </video>
+      <div class="acc-overlay">
+        <span class="acc-service">Cinematic Listing Video</span>
+        <span class="acc-title">Villa am Stadtrand</span>
+        <span class="acc-loc">Frankfurt · 4K Produktion</span>
       </div>
-      <div class="portfolio-card-label">@tribestudio.de · Frankfurt</div>
     </div>
-    <div class="portfolio-card">
-      <div class="card-media">
-        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1778008002/3D_Geb%C3%A4udereinigung_sq0ruh.mp4" type="video/mp4">
-        </video>
+    <div class="acc-card">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1778008002/3D_Geb%C3%A4udereinigung_sq0ruh.mp4" type="video/mp4">
+      </video>
+      <div class="acc-overlay">
+        <span class="acc-service">3D Visualisierung</span>
+        <span class="acc-title">Gewerbeimmobilie</span>
+        <span class="acc-loc">Darmstadt · Social Reels</span>
       </div>
-      <div class="portfolio-card-label">@tribestudio.de · Darmstadt</div>
     </div>
-    <div class="portfolio-card">
-      <div class="card-media">
-        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto" data-start="30">
-          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
-        </video>
+    <div class="acc-card">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777938892/Ostend_Final_Drone_tiozjz.mp4" type="video/mp4">
+      </video>
+      <div class="acc-overlay">
+        <span class="acc-service">Drohnenaufnahmen</span>
+        <span class="acc-title">Penthouse Suite</span>
+        <span class="acc-loc">Mannheim · Aerial 4K</span>
       </div>
-      <div class="portfolio-card-label">@tribestudio.de · Mannheim</div>
     </div>
-    <div class="portfolio-card">
-      <div class="card-media">
-        <video class="portfolio-card-img portfolio-video" autoplay muted playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
-        </video>
+    <div class="acc-card">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1777939401/Re_Promo_3_nbwrpx.mp4" type="video/mp4">
+      </video>
+      <div class="acc-overlay">
+        <span class="acc-service">Personal Brand Video</span>
+        <span class="acc-title">Neubauprojekt</span>
+        <span class="acc-loc">Heidelberg · Kampagne</span>
       </div>
-      <div class="portfolio-card-label">@tribestudio.de · Heidelberg</div>
     </div>
-  </div>
-  <div class="carousel-arrows">
-    <button class="carousel-btn" onclick="scrollCarousel(-1)" aria-label="Zurück">
-      <svg width="16" height="12" viewBox="0 0 18 14" fill="none"><path d="M7 1L1 7M1 7L7 13M1 7H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <button class="carousel-btn" onclick="scrollCarousel(1)" aria-label="Weiter">
-      <svg width="16" height="12" viewBox="0 0 18 14" fill="none"><path d="M11 1L17 7M17 7L11 13M17 7H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
   </div>
 </section>
 
@@ -1233,15 +1232,12 @@
     document.body.style.overflow = '';
   }
 
-  function scrollCarousel(dir) {
-    document.getElementById('portfolioCarousel').scrollBy({ left: dir * 390, behavior: 'smooth' });
-  }
-
-  document.querySelectorAll('.portfolio-video').forEach(video => {
-    const start = parseFloat(video.dataset.start || 0);
-    video.addEventListener('loadedmetadata', function() { this.currentTime = start; });
-    video.addEventListener('timeupdate', function() {
-      if (this.currentTime >= start + 10 || this.currentTime < start) this.currentTime = start;
+  // Portfolio accordion
+  document.querySelectorAll('.acc-card').forEach(card => {
+    card.addEventListener('click', function() {
+      if (this.classList.contains('active')) return;
+      document.querySelectorAll('.acc-card').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
     });
   });
 
@@ -1268,7 +1264,7 @@
 
   const st = { start: 'top 82%', toggleActions: 'play none none none' };
 
-  gsap.from('.portfolio-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.acc-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 30, stagger: 0.1, duration: 0.9, ease: 'power3.out' });
   gsap.from('.ueber-grid > *', { scrollTrigger: { trigger: '#ueber-uns', ...st }, opacity: 0, y: 40, stagger: 0.22, duration: 1.0, ease: 'power2.out' });
   gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.12, duration: 0.9, ease: 'power2.out' });
   gsap.from('.testimonial-card', { scrollTrigger: { trigger: '#testimonials', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
