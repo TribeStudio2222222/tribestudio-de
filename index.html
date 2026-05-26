@@ -161,10 +161,11 @@
     .hero-location svg { flex-shrink: 0; }
 
     .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: clamp(3.2rem, 7vw, 6.5rem);
-      line-height: 0.96; letter-spacing: 0.01em;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+      line-height: 0.93; letter-spacing: -0.01em;
+      text-transform: uppercase;
       color: var(--cream); margin-bottom: 2.5rem;
     }
     .hero-headline .line-1,
@@ -854,9 +855,8 @@
       .phone-main { width: clamp(200px, 45vw, 280px); }
     }
     @media (max-height: 700px) {
-      .hero-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
+      .hero-headline { font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 1.5rem; }
       .hero-location { margin-bottom: 1.25rem; }
-      .hero-subtext { font-size: 0.9rem; margin-bottom: 1.25rem; }
       .hero-bullets { gap: 0.5rem; margin-bottom: 1.5rem; }
     }
     @media (max-width: 1200px) {
@@ -876,9 +876,8 @@
       section { padding: 5rem 1.5rem; }
       #hero { padding: 0 1.5rem; }
       #booking { padding: 6rem 1.5rem; }
-      .hero-headline { font-size: clamp(2.2rem, 9vw, 3.2rem); margin-bottom: 1.75rem; }
+      .hero-headline { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.75rem; }
       .hero-location { margin-bottom: 1.25rem; }
-      .hero-subtext { font-size: 0.95rem; margin-bottom: 1.25rem; }
       .hero-bullets { gap: 0.5rem; margin-bottom: 1.75rem; }
       .hero-cta-row { flex-direction: column; gap: 0.75rem; }
       .hero-cta-row .btn-primary,
@@ -956,36 +955,35 @@
     <div class="hero-content" id="heroContent">
       <div class="hero-location">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        Cinematische Immobilienvermarktung
+        Mannheim · Real Estate Media
       </div>
       <h1 class="hero-headline">
-        <span class="line-1">Außergewöhnliche Objekte</span>
-        <span class="line-2 accent">verdienen</span>
-        <span class="line-3 accent">außergewöhnliche Inszenierung.</span>
+        <span class="line-1">Cinematic Content</span>
+        <span class="line-2 accent">der Objekte verkauft</span>
+        <span class="line-3">und Kunden gewinnt.</span>
       </h1>
-      <p class="hero-subtext">Wir produzieren cinematische Vermarktung für Makler und Bauträger, die sich von der Masse abheben wollen. Vom ersten Frame bis zur fertigen Kampagne.</p>
       <ul class="hero-bullets">
         <li>
           <span class="bullet-icon">
             <svg width="9" height="10" viewBox="0 0 11 13" fill="currentColor"><path d="M0 0.5v12l11-6L0 0.5z"/></svg>
           </span>
-          Cinematische Objektfilme in 4K
+          Cinematische 45–60s Videos: gebaut um den Scroll zu stoppen.
         </li>
         <li>
           <span class="bullet-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </span>
-          Strategische Social-Media-Vermarktung
+          Hooks &amp; Skripte inklusive: wir sagen dir genau was zu sagen ist.
         </li>
         <li>
           <span class="bullet-icon">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
           </span>
-          Persönliche Markenpositionierung
+          Für Makler gemacht: Branding-Videos, Reels, Fotos, Drohne.
         </li>
       </ul>
       <div class="hero-cta-row">
-        <a href="#pakete" class="btn-primary">Angebot holen →</a>
+        <a href="#pakete" class="btn-primary">Unsere Pakete →</a>
         <a href="#portfolio" class="btn-outline-white">Unsere Arbeiten</a>
       </div>
     </div>
