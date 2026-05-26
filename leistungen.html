@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsere Leistungen – Tribe Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green-deep: #1A3A2E;
+      --green: #2D5A43;
+      --sand: #D9CBB3;
+      --sand-light: #EDE6D8;
+      --cream: #E5DFD3;
+      --black: #0A0F0C;
+      --white: #FFFFFF;
+      --light: #E5DFD3;
+      --light-2: #D9D2C5;
+      --gray-dark: #6B6560;
+      --text-dark: #1A1816;
+    }
+
+    html { scroll-behavior: auto; }
+    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text-dark); overflow-x: hidden; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0.1rem 3rem; overflow: visible;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(20px);
+      background: rgba(10,15,12,0.93);
+      border-bottom: 1px solid rgba(217,203,179,0.08);
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; position: relative; padding-bottom: 3px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--sand);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--sand); }
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; justify-content: center;
+    }
+    .nav-logo img { height: 114px; width: auto; transform: scale(2); transform-origin: center center; }
+    .nav-logo-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.3rem; font-weight: 600; font-style: italic;
+      color: var(--cream); letter-spacing: 0.05em;
+    }
+    .nav-right { display: flex; align-items: center; gap: 1rem; justify-content: flex-end; }
+    .nav-email {
+      color: rgba(255,255,255,0.45); font-size: 0.8rem;
+      text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+      transition: color 0.3s;
+    }
+    .nav-email:hover { color: rgba(255,255,255,0.8); }
+    .nav-cta {
+      background: transparent; color: var(--sand);
+      border: 1px solid rgba(217,203,179,0.35);
+      padding: 0.55rem 1.25rem; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.3s;
+      white-space: nowrap; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .nav-cta:hover { background: var(--sand); color: var(--green-deep); border-color: var(--sand); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); transition: all 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-overlay {
+      position: fixed; inset: 0; background: var(--green-deep); z-index: 999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.77,0,0.175,1);
+    }
+    .mobile-overlay.active { transform: translateX(0); }
+    .mobile-overlay a {
+      color: var(--cream); text-decoration: none;
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+      font-weight: 600; letter-spacing: 0.06em; transition: color 0.3s;
+    }
+    .mobile-overlay a:hover { color: var(--sand); }
+
+    /* ===== HERO ===== */
+    #hero {
+      height: 100vh; position: relative; overflow: hidden;
+      display: flex; align-items: flex-end;
+      background: var(--black);
+      padding: 0 5rem 10rem;
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(10,15,12,0.3) 0%, rgba(10,15,12,0.65) 60%, rgba(10,15,12,0.85) 100%);
+    }
+    .hero-bottom-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 38%; z-index: 2; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, var(--light) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 3;
+      max-width: 900px;
+    }
+    .hero-location {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--sand);
+      margin-bottom: 2rem;
+    }
+    .hero-location::before {
+      content: ''; display: block; width: 20px; height: 1px; background: var(--sand);
+    }
+    .hero-headline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: clamp(3rem, 8vw, 7rem);
+      color: var(--white); line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .hero-headline em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      text-transform: none; letter-spacing: 0.01em;
+      display: block; color: var(--sand); margin-bottom: 0.1em;
+    }
+
+    /* ===== PROZESS ===== */
+    #prozess {
+      background: var(--light); padding: 10rem 5rem 14rem; position: relative;
+    }
+    .prozess-inner { max-width: 1200px; margin: 0 auto; }
+    .prozess-header { margin-bottom: 3.5rem; text-align: center; }
+    .prozess-headline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      color: var(--text-dark); line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .prozess-headline em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600;
+      text-transform: none; letter-spacing: 0.01em;
+      display: block; margin-bottom: 0.15em;
+    }
+    .prozess-sub { font-size: 1rem; color: var(--gray-dark); line-height: 1.7; }
+    .prozess-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .prozess-card {
+      background: #1a1a1c; border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .prozess-visual {
+      height: 190px; position: relative; overflow: hidden;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prozess-visual img { width: 100%; height: 100%; object-fit: contain; padding: 1.25rem; display: block; }
+    .prozess-card-body { padding: 1.5rem; }
+    .prozess-step-badge {
+      display: inline-flex; background: var(--sand); color: var(--text-dark);
+      padding: 0.28rem 0.9rem; border-radius: 100px;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.9rem;
+    }
+    .prozess-step-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: 1.15rem; color: var(--white);
+      line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.65rem;
+    }
+    .prozess-step-desc { font-size: 0.85rem; color: rgba(229,223,211,0.55); line-height: 1.65; }
+    .prozess-bottom-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 200px; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, var(--white) 100%);
+    }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--black); padding: 2rem 5rem 1.5rem; position: relative; }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(217,203,179,0.28), transparent);
+    }
+    .footer-main { display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 1.5rem; }
+    .footer-top-row { display: flex; align-items: center; justify-content: center; gap: 4rem; }
+    .footer-brand-logo { height: 480px; width: auto; display: block; }
+    .footer-right { display: flex; align-items: flex-start; gap: 3rem; }
+    .footer-cta-row { display: flex; justify-content: center; }
+    .footer-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: var(--sand); color: var(--text-dark);
+      border-radius: 100px; padding: 0.75rem 1.5rem;
+      font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .footer-cta-btn:hover { background: var(--sand-light); transform: translateY(-2px); }
+    .footer-nav-title {
+      font-family: 'Inter', sans-serif; font-size: 0.62rem;
+      font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(217,203,179,0.45); margin-bottom: 1.4rem;
+    }
+    .footer-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-nav-links a {
+      display: flex; align-items: center; gap: 0.65rem;
+      color: rgba(217,203,179,0.5); text-decoration: none;
+      font-size: 0.9rem; transition: color 0.2s;
+    }
+    .footer-nav-links a:hover { color: var(--sand); }
+    .footer-nav-links svg { opacity: 0.5; flex-shrink: 0; }
+    .footer-nav-links a:hover svg { opacity: 1; }
+    .footer-bottom {
+      padding-top: 2rem; border-top: 1px solid rgba(217,203,179,0.07);
+      text-align: center; font-size: 0.78rem; color: rgba(217,203,179,0.22);
+    }
+    .footer-bottom a { color: rgba(217,203,179,0.22); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--sand); }
+
+    /* ===== MODALS ===== */
+    #impressum-modal {
+      position: fixed; inset: 0; z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.82);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    #impressum-modal.active { opacity: 1; pointer-events: auto; }
+    .datenschutz-box {
+      background: var(--black); border: 1px solid rgba(217,203,179,0.12);
+      border-radius: 16px; width: min(860px, 92vw);
+      max-height: 85vh; overflow-y: scroll; position: relative;
+      padding: 2.5rem 3rem; scrollbar-width: thin;
+      scrollbar-color: rgba(217,203,179,0.28) transparent;
+    }
+    .datenschutz-close {
+      position: sticky; top: 0; float: right;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6); font-size: 1.3rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      margin-left: auto; margin-bottom: 1.5rem;
+    }
+    .datenschutz-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .datenschutz-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 2rem; color: var(--cream); margin-bottom: 1.5rem;
+    }
+    .datenschutz-content h2 {
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--cream); margin: 2rem 0 0.75rem;
+    }
+    .datenschutz-content p { font-size: 0.88rem; color: rgba(229,223,211,0.65); line-height: 1.8; margin-bottom: 1rem; }
+    .datenschutz-content a { color: var(--sand); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .nav-links, .nav-email { display: none; }
+      .hamburger { display: flex; }
+      nav { grid-template-columns: auto 1fr auto; }
+      .nav-right { display: none; }
+      #hero { padding: 0 2rem 8rem; }
+      .prozess-steps { grid-template-columns: 1fr 1fr; }
+      #prozess { padding: 8rem 2rem 12rem; }
+      .footer-top-row { flex-direction: column; gap: 2rem; }
+      .footer-brand-logo { height: 240px; }
+      footer { padding: 2rem 2rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .prozess-steps { grid-template-columns: 1fr; }
+      .hero-headline { font-size: clamp(2.5rem, 12vw, 4rem); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="leistungen.html" onclick="closeMobile()">Unsere Leistungen</a>
+  <a href="index.html#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="index.html#angebote" onclick="closeMobile()">Pakete</a>
+  <a href="index.html#footer" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <ul class="nav-links">
+    <li><a href="leistungen.html" class="active">Unsere Leistungen</a></li>
+    <li><a href="index.html#portfolio">Portfolio</a></li>
+    <li><a href="index.html#angebote">Pakete</a></li>
+    <li><a href="index.html#footer">Kontakt</a></li>
+  </ul>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-word">Tribe</span>
+    <img src="logo-ts.png" alt="Tribe Studio">
+    <span class="nav-logo-word">Studio</span>
+  </a>
+  <div class="nav-right">
+    <a href="mailto:support@tribestudio.de" class="nav-email">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      support@tribestudio.de
+    </a>
+    <a href="index.html#angebote" class="nav-cta">Angebot holen →</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <img src="pexels-michael-meyer-114404833-9739244.jpg" alt="Tribe Studio Leistungen" class="hero-bg-img">
+  <div class="hero-overlay"></div>
+  <div class="hero-bottom-fade"></div>
+  <div class="hero-content">
+    <p class="hero-location">Tribe Studio · Mannheim</p>
+    <h1 class="hero-headline">
+      <em>Cinematisch.</em>
+      Unsere<br>Leistungen.
+    </h1>
+  </div>
+</section>
+
+<!-- PROZESS -->
+<section id="prozess">
+  <div class="prozess-inner">
+    <div class="prozess-header">
+      <h2 class="prozess-headline"><em>Minimaler Aufwand</em>Maximaler Erfolg.</h2>
+      <p class="prozess-sub">Von der ersten Anfrage bis zur fertigen Lieferung führen wir dich durch jeden Schritt.</p>
+    </div>
+    <div class="prozess-steps">
+
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <img src="prozess-anfrage.png" alt="Projekt anfragen">
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 1</span>
+          <h3 class="prozess-step-title">Projekt anfragen</h3>
+          <p class="prozess-step-desc">Schreib uns kurz über das Kontaktformular oder per Mail – wir melden uns innerhalb von 24 Stunden.</p>
+        </div>
+      </div>
+
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <img src="prozess-gespraech.png" alt="Unser Gespräch">
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 2</span>
+          <h3 class="prozess-step-title">Unser Gespräch</h3>
+          <p class="prozess-step-desc">Im kurzen Call klären wir Objekt, Ziele und Stil. Du gibst uns alles, was wir für die Planung brauchen.</p>
+        </div>
+      </div>
+
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <img src="prozess-equipment-nobg.png" alt="Shoot Day">
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 3</span>
+          <h3 class="prozess-step-title">Shoot Day</h3>
+          <p class="prozess-step-desc">Wir kommen zum Objekt, kümmern uns um alles – Kamera, Drohne, Licht. Du musst nur die Tür aufmachen.</p>
+        </div>
+      </div>
+
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <img src="Bildschirmfoto%202026-05-26%20um%2012.08.21.png" alt="Delivery">
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 4</span>
+          <h3 class="prozess-step-title">Delivery</h3>
+          <p class="prozess-step-desc">Fertig bearbeitetes Material landet bei dir – geschnitten, gebranded, bereit zum Posten. In 5 Werktagen.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="prozess-bottom-fade"></div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-main">
+    <div class="footer-top-row">
+      <img src="logo-ts.png" alt="Tribe Studio" class="footer-brand-logo">
+      <div class="footer-right">
+        <div>
+          <p class="footer-nav-title">Quick Links</p>
+          <ul class="footer-nav-links">
+            <li><a href="index.html#angebote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>Angebote</a></li>
+            <li><a href="index.html#portfolio"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>Portfolio</a></li>
+            <li><a href="leistungen.html#prozess"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Prozess</a></li>
+            <li><a href="index.html#footer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-nav-title">Socials</p>
+          <ul class="footer-nav-links">
+            <li><a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-cta-row">
+      <a href="index.html#footer" class="footer-cta-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Projekt starten
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Tribe Studio. Alle Rechte vorbehalten. | <a href="#" onclick="openImpressum(); return false;">Impressum</a> | <a href="index.html">Datenschutz</a></p>
+  </div>
+</footer>
+
+<!-- IMPRESSUM MODAL -->
+<div id="impressum-modal" onclick="if(event.target===this)closeImpressum()">
+  <div class="datenschutz-box">
+    <button class="datenschutz-close" onclick="closeImpressum()" aria-label="Schließen">×</button>
+    <div class="datenschutz-content">
+      <h1>Impressum</h1>
+      <p>GbR Pascal Brunner und Arian Shahidi<br>Am alten E-Werk 5a<br>64625 Bensheim</p>
+      <p><strong style="color:var(--cream)">Vertreten durch:</strong><br>Pascal Brunner<br>Arian Shahidi</p>
+      <h2>Kontakt</h2>
+      <p>Telefon: <a href="tel:+4917645688302">+49 176 45688302</a><br>
+      E-Mail: <a href="mailto:support@tribestudio.de">support@tribestudio.de</a></p>
+      <h2>Umsatzsteuer-ID</h2>
+      <p>DE457187950</p>
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = new Lenis({ lerp: 0.07, duration: 1.6, smooth: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  function toggleMobile() {
+    const h = document.getElementById('hamburger');
+    const o = document.getElementById('mobileOverlay');
+    h.classList.toggle('active');
+    o.classList.toggle('active');
+    document.body.style.overflow = o.classList.contains('active') ? 'hidden' : '';
+  }
+  function closeMobile() {
+    document.getElementById('hamburger').classList.remove('active');
+    document.getElementById('mobileOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function openImpressum() {
+    document.getElementById('impressum-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lenis.stop();
+  }
+  function closeImpressum() {
+    document.getElementById('impressum-modal').classList.remove('active');
+    document.body.style.overflow = '';
+    lenis.start();
+  }
+
+  // Load animation
+  gsap.set('#navbar', { opacity: 0, y: -20 });
+  gsap.set('.hero-location', { opacity: 0, y: 20 });
+  gsap.set('.hero-headline', { opacity: 0, y: 50 });
+
+  gsap.timeline({ delay: 0.1 })
+    .to('#navbar',        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0)
+    .to('.hero-location', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.5)
+    .to('.hero-headline', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, 0.8);
+
+  // Scroll animations
+  const st = { start: 'top 82%', toggleActions: 'play none none none' };
+  gsap.from('.prozess-header', { scrollTrigger: { trigger: '#prozess', ...st }, opacity: 0, y: 45, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.prozess-card',   { scrollTrigger: { trigger: '.prozess-steps', start: 'top 78%', toggleActions: 'play none none none' }, opacity: 0, y: 55, stagger: 0.15, duration: 1.0, ease: 'power3.out' });
+</script>
+</body>
+</html>
