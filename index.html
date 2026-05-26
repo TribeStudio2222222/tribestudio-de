@@ -76,10 +76,16 @@
     .nav-links a:hover::after { width: 100%; }
 
     .nav-logo {
-      display: flex; align-items: center; gap: 0.6rem;
-      text-decoration: none; justify-content: center; height: 38px;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; justify-content: center;
     }
-    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo img { height: 180px; width: auto; }
+    .nav-logo-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 600; font-style: italic;
+      color: var(--cream); letter-spacing: 0.05em;
+    }
 
     .nav-right {
       display: flex; align-items: center; gap: 1rem; justify-content: flex-end;
@@ -1104,7 +1110,9 @@
     <li><a href="#booking">Kontakt</a></li>
   </ul>
   <a href="#hero" class="nav-logo">
-    <img src="logo-ts.png" alt="Tribe Studio" style="height:180px; width:auto;">
+    <span class="nav-logo-word">Tribe</span>
+    <img src="logo-ts.png" alt="Tribe Studio">
+    <span class="nav-logo-word">Studio</span>
   </a>
   <div class="nav-right">
     <a href="mailto:support@tribestudio.de" class="nav-email">
