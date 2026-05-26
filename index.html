@@ -1820,18 +1820,41 @@
     .to('.hero-bullets',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.7)
     .to('.hero-cta-row',  { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 1.9);
 
-  const st = { start: 'top 82%', toggleActions: 'play none none none' };
+  const st  = { start: 'top 82%', toggleActions: 'play none none none' };
+  const stL = { start: 'top 85%', toggleActions: 'play none none none' };
 
-  gsap.from('.acc-card', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 30, stagger: 0.1, duration: 0.9, ease: 'power3.out' });
-  gsap.from('.ueber-grid > *', { scrollTrigger: { trigger: '#ueber-uns', ...st }, opacity: 0, y: 40, stagger: 0.22, duration: 1.0, ease: 'power2.out' });
-  gsap.from('.service-item', { scrollTrigger: { trigger: '#services', ...st }, opacity: 0, x: -20, stagger: 0.12, duration: 0.9, ease: 'power2.out' });
-  gsap.from('.testimonial-card', { scrollTrigger: { trigger: '#testimonials', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
-  gsap.from('.paket-card', { scrollTrigger: { trigger: '#pakete', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
-  gsap.from('.process-card', { scrollTrigger: { trigger: '#process', ...st }, opacity: 0, y: 40, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
-  gsap.from('#booking .booking-headline, #booking .booking-sub, #booking .booking-cta', { scrollTrigger: { trigger: '#booking', ...st }, opacity: 0, y: 30, stagger: 0.18, duration: 1.0, ease: 'power2.out' });
+  // — Erfolge —
+  gsap.from('.erfolge-badge',      { scrollTrigger: { trigger: '#erfolge', ...st }, opacity: 0, y: 20, duration: 0.7, ease: 'power2.out' });
+  gsap.from('.erfolge-headline',   { scrollTrigger: { trigger: '#erfolge', ...st }, opacity: 0, y: 45, duration: 1.1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.erfolge-phone-wrap', { scrollTrigger: { trigger: '.erfolge-phone-wrap', ...stL }, opacity: 0, y: 60, scale: 0.96, duration: 1.3, ease: 'power3.out', transformOrigin: 'bottom center' });
+  gsap.from('.erfolge-sub',        { scrollTrigger: { trigger: '.erfolge-sub', ...stL }, opacity: 0, y: 25, duration: 0.8, ease: 'power2.out' });
+  gsap.from('.erfolge-cta-row',    { scrollTrigger: { trigger: '.erfolge-cta-row', start: 'top 88%', toggleActions: 'play none none none' }, opacity: 0, y: 20, duration: 0.7, ease: 'power2.out' });
 
-  document.querySelectorAll('.section-headline, .ueber-headline').forEach(el => {
-    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 35, duration: 1.0, ease: 'power3.out' });
+  // — Portfolio —
+  gsap.from('.portfolio-main-headline', { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 45, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.portfolio-sub',           { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 25, duration: 0.8, ease: 'power2.out', delay: 0.15 });
+  gsap.from('.acc-card',                { scrollTrigger: { trigger: '#portfolio', ...st }, opacity: 0, y: 35, stagger: 0.1, duration: 0.9, ease: 'power3.out' });
+
+  // — Angebote —
+  gsap.from('.angebote-header', { scrollTrigger: { trigger: '#angebote', ...st }, opacity: 0, y: 45, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.angebot-row',     { scrollTrigger: { trigger: '.angebote-list', start: 'top 80%', toggleActions: 'play none none none' }, opacity: 0, y: 55, stagger: 0.18, duration: 1.1, ease: 'power3.out' });
+
+  // — Prozess —
+  gsap.from('.prozess-header', { scrollTrigger: { trigger: '#prozess', ...st }, opacity: 0, y: 45, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.prozess-card',   { scrollTrigger: { trigger: '.prozess-steps', start: 'top 78%', toggleActions: 'play none none none' }, opacity: 0, y: 55, stagger: 0.15, duration: 1.0, ease: 'power3.out' });
+
+  // — FAQ —
+  gsap.from('.faq-headline',     { scrollTrigger: { trigger: '#faq', ...st }, opacity: 0, y: 45, duration: 1.0, ease: 'power3.out' });
+  gsap.from('.faq-cats',         { scrollTrigger: { trigger: '#faq', ...st }, opacity: 0, y: 20, duration: 0.7, ease: 'power2.out', delay: 0.2 });
+  gsap.from('.faq-item',         { scrollTrigger: { trigger: '.faq-list', start: 'top 80%', toggleActions: 'play none none none' }, opacity: 0, y: 30, stagger: 0.07, duration: 0.7, ease: 'power2.out' });
+  gsap.from('.faq-contact-card', { scrollTrigger: { trigger: '.faq-contact-card', ...stL }, opacity: 0, y: 30, duration: 0.9, ease: 'power2.out' });
+
+  // — Generic section tags + headlines —
+  document.querySelectorAll('.section-tag').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }, opacity: 0, y: 15, duration: 0.6, ease: 'power2.out' });
+  });
+  document.querySelectorAll('.section-headline').forEach(el => {
+    gsap.from(el, { scrollTrigger: { trigger: el, ...stL }, opacity: 0, y: 35, duration: 1.0, ease: 'power3.out' });
   });
 
   function openImpressum() {
