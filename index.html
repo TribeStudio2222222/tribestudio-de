@@ -1531,10 +1531,10 @@
         <h3>Noch Fragen offen?</h3>
         <p>Melde dich direkt – wir antworten innerhalb von 24 Stunden.</p>
       </div>
-      <a href="#kontakt" class="faq-contact-btn">
+      <button onclick="openKontakt()" class="faq-contact-btn">
         Kontakt aufnehmen
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      </button>
     </div>
   </div>
 </section>
@@ -1893,12 +1893,165 @@
   function closeDatenschutzOutside(e) {
     if (e.target === document.getElementById('datenschutz-modal')) closeDatenschutz();
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDatenschutz(); closeImpressum(); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDatenschutz(); closeImpressum(); closeKontakt(); } });
 
   document.querySelectorAll('.datenschutz-box').forEach(box => {
     box.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
     box.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
   });
+
+  // Kontakt Modal
+  function openKontakt() {
+    document.getElementById('kontakt-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('kontakt-success').style.display = 'none';
+    document.getElementById('kontakt-form').style.display = 'block';
+    document.getElementById('kontakt-form').reset();
+  }
+  function closeKontakt() {
+    document.getElementById('kontakt-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('kontakt-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeKontakt();
+  });
+  document.getElementById('kontakt-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = this.querySelector('[name="k_name"]').value;
+    const email   = this.querySelector('[name="k_email"]').value;
+    const betreff = this.querySelector('[name="k_betreff"]').value;
+    const msg     = this.querySelector('[name="k_nachricht"]').value;
+    // Mailto fallback — öffnet E-Mail-Client des Nutzers
+    const mailto = `mailto:support@tribestudio.de?subject=${encodeURIComponent(betreff || 'Kontaktanfrage von ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nE-Mail: ' + email + '\n\n' + msg)}`;
+    window.location.href = mailto;
+    // Erfolgsmeldung
+    this.style.display = 'none';
+    document.getElementById('kontakt-success').style.display = 'flex';
+  });
 </script>
+
+<!-- KONTAKT MODAL -->
+<div id="kontakt-modal" class="kontakt-modal-overlay">
+  <div class="kontakt-modal-box">
+    <button class="kontakt-modal-close" onclick="closeKontakt()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="kontakt-modal-header">
+      <p class="kontakt-modal-tag">Tribe Studio · Kontakt</p>
+      <h2 class="kontakt-modal-title">Schreib uns direkt.</h2>
+      <p class="kontakt-modal-sub">Wir antworten innerhalb von 24 Stunden.</p>
+    </div>
+    <form id="kontakt-form" class="kontakt-modal-form" novalidate>
+      <div class="kontakt-row">
+        <div class="kontakt-group">
+          <label for="k_name">Name *</label>
+          <input type="text" id="k_name" name="k_name" placeholder="Vor- und Nachname" required>
+        </div>
+        <div class="kontakt-group">
+          <label for="k_email">E-Mail *</label>
+          <input type="email" id="k_email" name="k_email" placeholder="deine@email.de" required>
+        </div>
+      </div>
+      <div class="kontakt-group">
+        <label for="k_betreff">Betreff</label>
+        <input type="text" id="k_betreff" name="k_betreff" placeholder="Worum geht es?">
+      </div>
+      <div class="kontakt-group">
+        <label for="k_nachricht">Nachricht *</label>
+        <textarea id="k_nachricht" name="k_nachricht" placeholder="Was möchtest du uns mitteilen?" required></textarea>
+      </div>
+      <button type="submit" class="kontakt-submit">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        E-Mail senden
+      </button>
+    </form>
+    <div id="kontakt-success" class="kontakt-success" style="display:none;">
+      <div class="kontakt-success-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--sand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p>Dein E-Mail-Programm öffnet sich gleich – schick die E-Mail ab und wir melden uns.</p>
+      <button onclick="closeKontakt()" class="kontakt-submit" style="margin-top:1.5rem;">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .kontakt-modal-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(10,15,12,0.85); backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+  }
+  .kontakt-modal-overlay.active { opacity: 1; pointer-events: all; }
+  .kontakt-modal-box {
+    background: #111310; border: 1px solid rgba(217,203,179,0.1);
+    border-radius: 20px; padding: 3rem; width: 100%; max-width: 600px;
+    position: relative;
+    transform: translateY(30px);
+    transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  }
+  .kontakt-modal-overlay.active .kontakt-modal-box { transform: translateY(0); }
+  .kontakt-modal-close {
+    position: absolute; top: 1.4rem; right: 1.4rem;
+    background: rgba(217,203,179,0.07); border: 1px solid rgba(217,203,179,0.1);
+    border-radius: 8px; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(217,203,179,0.5); cursor: pointer; transition: all 0.2s;
+  }
+  .kontakt-modal-close:hover { background: rgba(217,203,179,0.14); color: var(--sand); }
+  .kontakt-modal-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--sand); margin-bottom: 0.6rem;
+  }
+  .kontakt-modal-title {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 2.2rem; color: var(--cream); margin-bottom: 0.4rem;
+  }
+  .kontakt-modal-sub {
+    font-size: 0.85rem; color: rgba(217,203,179,0.4); margin-bottom: 2rem;
+  }
+  .kontakt-modal-form { display: flex; flex-direction: column; gap: 1rem; }
+  .kontakt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .kontakt-group { display: flex; flex-direction: column; gap: 0.45rem; }
+  .kontakt-group label { font-size: 0.75rem; font-weight: 500; color: rgba(217,203,179,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
+  .kontakt-group input,
+  .kontakt-group textarea {
+    background: #1a1d1b; border: 1px solid rgba(217,203,179,0.12);
+    border-radius: 10px; padding: 0.85rem 1rem;
+    color: var(--cream); font-family: 'Inter', sans-serif; font-size: 0.88rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .kontakt-group input:focus,
+  .kontakt-group textarea:focus { border-color: rgba(217,203,179,0.4); }
+  .kontakt-group input::placeholder,
+  .kontakt-group textarea::placeholder { color: rgba(217,203,179,0.22); }
+  .kontakt-group textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+  .kontakt-submit {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--sand); color: #1A1816;
+    border: none; border-radius: 10px;
+    padding: 0.95rem 2rem; font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer;
+    transition: background 0.2s, transform 0.2s; align-self: flex-start;
+  }
+  .kontakt-submit:hover { background: #EDE6D8; transform: translateY(-2px); }
+  .kontakt-success {
+    flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem 0;
+    gap: 1rem;
+  }
+  .kontakt-success-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(217,203,179,0.08); border: 1px solid rgba(217,203,179,0.15);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .kontakt-success p { color: rgba(217,203,179,0.5); font-size: 0.9rem; line-height: 1.6; max-width: 340px; }
+  @media (max-width: 600px) {
+    .kontakt-modal-box { padding: 2rem 1.5rem; }
+    .kontakt-row { grid-template-columns: 1fr; }
+  }
+</style>
 </body>
 </html>
