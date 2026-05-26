@@ -191,6 +191,21 @@
       color: rgba(217,203,179,0.08); line-height: 1; letter-spacing: -0.03em;
     }
     .paket-left { display: flex; flex-direction: column; gap: 0.5rem; }
+    .paket-media {
+      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+      overflow: hidden; margin-bottom: 1rem; background: #0d1208; flex-shrink: 0;
+    }
+    .paket-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .paket-media-custom {
+      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+      background: linear-gradient(160deg, #0d1410 0%, #1a2518 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .paket-media-custom span {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 2rem; color: rgba(217,203,179,0.15); font-weight: 600;
+    }
     .paket-name {
       font-family: 'Inter', sans-serif; font-weight: 800; text-transform: uppercase;
       font-size: 1.4rem; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 0.5rem;
@@ -501,6 +516,9 @@
     <div class="paket-row">
       <div class="paket-num">01</div>
       <div class="paket-left">
+        <div class="paket-media">
+          <video autoplay muted loop playsinline><source src="angebot-1.mp4" type="video/mp4"></video>
+        </div>
         <div class="paket-name">Starter</div>
         <span class="paket-badge">3 Leistungen</span>
         <p class="paket-desc">Der perfekte Einstieg – maximale Wirkung mit cinematischen Immobilienvideos.</p>
@@ -519,9 +537,12 @@
     <div class="paket-row popular">
       <div class="paket-num">02</div>
       <div class="paket-left">
+        <div class="paket-media">
+          <video autoplay muted loop playsinline><source src="angebot-2.mp4" type="video/mp4"></video>
+        </div>
         <div class="paket-name">Pro</div>
         <span class="paket-badge">Empfohlen</span>
-        <p class="paket-desc">Das Rundup-Paket für Makler, die auf Social Media skalieren und automatisieren wollen.</p>
+        <p class="paket-desc">Das Rundum-Paket für Makler, die auf Social Media skalieren und automatisieren wollen.</p>
       </div>
       <ul class="paket-features">
         <li class="inherited">Alles aus Paket 1</li>
@@ -539,8 +560,11 @@
     <div class="paket-row">
       <div class="paket-num">03</div>
       <div class="paket-left">
+        <div class="paket-media">
+          <video autoplay muted loop playsinline><source src="angebot-3.mp4" type="video/mp4"></video>
+        </div>
         <div class="paket-name">Premium</div>
-        <span class="paket-badge">Custom</span>
+        <span class="paket-badge">Vollpaket</span>
         <p class="paket-desc">Für Makler mit starker Marke – maximale Präsenz und individueller Webauftritt.</p>
       </div>
       <ul class="paket-features">
@@ -550,6 +574,26 @@
       </ul>
       <div class="paket-cta-wrap">
         <a href="anfrage.html?paket=Premium" class="paket-cta">Anfragen →</a>
+      </div>
+    </div>
+
+    <!-- Paket 4 -->
+    <div class="paket-row">
+      <div class="paket-num">04</div>
+      <div class="paket-left">
+        <div class="paket-media-custom"><span>Custom</span></div>
+        <div class="paket-name">Custom</div>
+        <span class="paket-badge">Individuell</span>
+        <p class="paket-desc">Maßgeschneidert für Bauträger und Makler mit mehreren Objekten.</p>
+      </div>
+      <ul class="paket-features">
+        <li class="inherited">Alles aus Premium</li>
+        <li>Laufende monatliche Betreuung</li>
+        <li>Mehrere Objekte &amp; Formate</li>
+        <li>Exklusiv-Partnerschaft möglich</li>
+      </ul>
+      <div class="paket-cta-wrap">
+        <a href="anfrage.html?paket=Custom" class="paket-cta">Anfragen →</a>
       </div>
     </div>
 
