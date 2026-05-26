@@ -332,18 +332,18 @@
     }
 
     /* ===== ERFOLGE ===== */
-    #erfolge {
-      background: var(--light);
-      padding: 8rem 5rem;
+    #erfolge { background: var(--light); padding: 7rem 5rem; }
+    .erfolge-inner {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+      gap: 3rem; align-items: center;
+      max-width: 1080px; margin: 0 auto;
     }
     .erfolge-badge {
       display: inline-flex; align-items: center; gap: 0.6rem;
       border: 1px solid rgba(26,26,26,0.14); border-radius: 100px;
       padding: 0.45rem 1.1rem; font-size: 0.7rem; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-dark); margin-bottom: 2rem;
+      color: var(--text-dark); margin-bottom: 1.5rem;
     }
     .badge-dot {
       width: 7px; height: 7px; border-radius: 50%;
@@ -352,9 +352,9 @@
     }
     .erfolge-headline {
       font-family: 'DM Sans', sans-serif; font-weight: 800;
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      color: var(--text-dark); line-height: 1.05;
-      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      color: var(--text-dark); line-height: 1.02;
+      letter-spacing: -0.025em; margin-bottom: 1rem;
     }
     .erfolge-headline em {
       font-family: 'Cormorant Garamond', serif;
@@ -362,7 +362,7 @@
     }
     .erfolge-sub {
       font-size: 1rem; color: var(--gray-dark);
-      line-height: 1.75; max-width: 400px; margin-bottom: 2.5rem;
+      line-height: 1.75; max-width: 380px; margin-bottom: 2rem;
     }
     .erfolge-cta-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
     .erfolge-cta {
@@ -381,46 +381,74 @@
     }
     .erfolge-social a:hover { border-color: var(--text-dark); background: var(--text-dark); color: var(--white); }
 
-    .erfolge-right { display: flex; justify-content: center; }
-    .phone-mockup {
-      width: clamp(220px, 22vw, 300px);
+    /* Phone carousel */
+    .erfolge-carousel { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+    .phone-main {
+      width: clamp(240px, 26vw, 330px);
       aspect-ratio: 9/19.5;
-      background: #111; border-radius: 44px;
-      padding: 12px;
-      box-shadow: 0 50px 100px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06);
-    }
-    .phone-screen {
-      width: 100%; height: 100%; border-radius: 34px;
-      overflow: hidden; background: #1c1c1e;
-      display: flex; flex-direction: column;
-    }
-    .phone-placeholder {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.75rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .phone-placeholder-icon { color: rgba(143,176,158,0.35); }
-    .phone-placeholder-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(217,203,179,0.3); text-align: center; line-height: 1.8;
-    }
-    .phone-bar {
-      padding: 0.65rem 0.9rem; display: flex; align-items: center; gap: 0.5rem;
+      background: #111; border-radius: 44px; padding: 10px;
+      box-shadow: 0 40px 90px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06);
       flex-shrink: 0;
     }
+    .phone-main-screen {
+      width: 100%; height: 100%; border-radius: 36px;
+      overflow: hidden; background: #1c1c1e; display: flex; flex-direction: column;
+    }
+    .phone-main-body {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.7rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .phone-main-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+      font-weight: 600; color: rgba(143,176,158,0.25); line-height: 1;
+    }
+    .phone-main-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.52rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(217,203,179,0.28); text-align: center; line-height: 1.9;
+    }
+    .phone-bar {
+      padding: 0.65rem 0.9rem; display: flex; align-items: center;
+      gap: 0.5rem; flex-shrink: 0;
+    }
     .phone-logo-mark {
-      width: 22px; height: 22px; border-radius: 6px;
-      background: var(--green); flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 6px; background: var(--green);
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
       font-family: 'Cormorant Garamond', serif; font-weight: 700;
       font-size: 0.78rem; color: var(--white);
     }
     .phone-handle {
-      font-size: 0.68rem; color: rgba(255,255,255,0.55); flex: 1;
+      font-size: 0.66rem; color: rgba(255,255,255,0.5); flex: 1;
       font-family: 'JetBrains Mono', monospace; letter-spacing: 0.03em;
     }
-    .phone-dots { font-size: 0.85rem; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+    .phone-dots { font-size: 0.85rem; color: rgba(255,255,255,0.22); letter-spacing: 0.1em; }
+
+    /* Thumbnail row */
+    .phone-thumbs-row { display: flex; align-items: center; gap: 0.5rem; }
+    .phone-nav-btn {
+      width: 30px; height: 30px; flex-shrink: 0;
+      border: 1.5px solid rgba(26,26,26,0.14); border-radius: 50%;
+      background: var(--white); color: var(--text-dark);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s;
+    }
+    .phone-nav-btn:hover { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); }
+    .phone-thumb {
+      width: 48px; aspect-ratio: 9/19.5;
+      background: #1c1c1e; border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s; overflow: hidden;
+    }
+    .phone-thumb.active {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(45,90,67,0.18);
+    }
+    .phone-thumb-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem; color: rgba(255,255,255,0.2); letter-spacing: 0.05em;
+    }
 
     /* ===== ÜBER UNS ===== */
     #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
@@ -728,9 +756,8 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      #erfolge { grid-template-columns: 1fr; gap: 3rem; }
-      .erfolge-right { justify-content: flex-start; }
-      .phone-mockup { width: clamp(180px, 45vw, 260px); }
+      .erfolge-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .phone-main { width: clamp(200px, 45vw, 280px); }
     }
     @media (max-height: 700px) {
       .hero-headline { font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; }
@@ -762,8 +789,10 @@
       .hero-cta-row { flex-direction: column; gap: 0.75rem; }
       .hero-cta-row .btn-primary,
       .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
-      #erfolge { padding: 5rem 1.5rem; grid-template-columns: 1fr; }
-      .phone-mockup { width: clamp(160px, 50vw, 220px); }
+      #erfolge { padding: 5rem 1.5rem; }
+      .erfolge-inner { grid-template-columns: 1fr; }
+      .phone-main { width: clamp(180px, 52vw, 240px); }
+      .phone-thumb { width: 40px; }
       #portfolio { padding: 5rem 1.5rem; }
       .portfolio-accordion { max-width: 100%; height: clamp(340px, 90vw, 500px); gap: 0.5rem; }
       .acc-card { border-radius: 14px; }
@@ -872,39 +901,55 @@
 
 <!-- ERFOLGE -->
 <section id="erfolge">
-  <div class="erfolge-left">
-    <div class="erfolge-badge">
-      <span class="badge-dot"></span>
-      Bereits 20+ Projekte realisiert
-    </div>
-    <h2 class="erfolge-headline">Ergebnisse für<br>Makler, die <em>wirklich</em><br>verkaufen wollen.</h2>
-    <p class="erfolge-sub">Cinematische Immobilienvermarktung, die Anfragen generiert – von der ersten Location-Begehung bis zum viralen Reel.</p>
-    <div class="erfolge-cta-row">
-      <a href="#pakete" class="erfolge-cta">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Projekt starten
-      </a>
-      <div class="erfolge-social">
-        <a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  <div class="erfolge-inner">
+    <div class="erfolge-left">
+      <div class="erfolge-badge">
+        <span class="badge-dot"></span>
+        Bereits 20+ Projekte realisiert
+      </div>
+      <h2 class="erfolge-headline">Ergebnisse für<br>Makler, die <em>wirklich</em><br>verkaufen.</h2>
+      <p class="erfolge-sub">Cinematische Immobilienvermarktung, die Anfragen generiert – von der ersten Location-Begehung bis zum viralen Reel.</p>
+      <div class="erfolge-cta-row">
+        <a href="#pakete" class="erfolge-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Projekt starten
         </a>
+        <div class="erfolge-social">
+          <a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="erfolge-right">
-    <div class="phone-mockup">
-      <div class="phone-screen">
-        <div class="phone-placeholder">
-          <div class="phone-placeholder-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+
+    <div class="erfolge-carousel">
+      <!-- Großes aktives Phone -->
+      <div class="phone-main">
+        <div class="phone-main-screen">
+          <div class="phone-main-body">
+            <div class="phone-main-num" id="phoneMainNum">01</div>
+            <div class="phone-main-label">Video wird<br>geliefert</div>
           </div>
-          <div class="phone-placeholder-label">Video<br>wird geliefert</div>
+          <div class="phone-bar">
+            <div class="phone-logo-mark">T</div>
+            <span class="phone-handle">tribestudio.de</span>
+            <span class="phone-dots">···</span>
+          </div>
         </div>
-        <div class="phone-bar">
-          <div class="phone-logo-mark">T</div>
-          <span class="phone-handle">tribestudio.de</span>
-          <span class="phone-dots">···</span>
-        </div>
+      </div>
+      <!-- Thumbnail-Zeile -->
+      <div class="phone-thumbs-row">
+        <button class="phone-nav-btn" id="phonePrev" aria-label="Zurück">
+          <svg width="12" height="10" viewBox="0 0 14 12" fill="none"><path d="M6 1L1 6M1 6L6 11M1 6H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="phone-thumb active" data-idx="0"><span class="phone-thumb-num">01</span></div>
+        <div class="phone-thumb" data-idx="1"><span class="phone-thumb-num">02</span></div>
+        <div class="phone-thumb" data-idx="2"><span class="phone-thumb-num">03</span></div>
+        <div class="phone-thumb" data-idx="3"><span class="phone-thumb-num">04</span></div>
+        <div class="phone-thumb" data-idx="4"><span class="phone-thumb-num">05</span></div>
+        <button class="phone-nav-btn" id="phoneNext" aria-label="Weiter">
+          <svg width="12" height="10" viewBox="0 0 14 12" fill="none"><path d="M8 1L13 6M13 6L8 11M13 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -1367,6 +1412,20 @@
     document.getElementById('mobileOverlay').classList.remove('active');
     document.body.style.overflow = '';
   }
+
+  // Erfolge phone carousel
+  const phoneThumbs = document.querySelectorAll('.phone-thumb');
+  const phoneMainNum = document.getElementById('phoneMainNum');
+  let phoneActive = 0;
+  function setPhoneActive(idx) {
+    phoneThumbs.forEach(t => t.classList.remove('active'));
+    phoneThumbs[idx].classList.add('active');
+    phoneActive = idx;
+    if (phoneMainNum) phoneMainNum.textContent = String(idx + 1).padStart(2, '0');
+  }
+  phoneThumbs.forEach((t, i) => t.addEventListener('click', () => setPhoneActive(i)));
+  document.getElementById('phonePrev')?.addEventListener('click', () => setPhoneActive((phoneActive - 1 + 5) % 5));
+  document.getElementById('phoneNext')?.addEventListener('click', () => setPhoneActive((phoneActive + 1) % 5));
 
   // Portfolio accordion
   document.querySelectorAll('.acc-card').forEach(card => {
