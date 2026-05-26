@@ -129,7 +129,7 @@
     }
     .hero-bottom-fade {
       position: absolute; bottom: 0; left: 0; right: 0;
-      height: 38%; z-index: 0; pointer-events: none;
+      height: 18%; z-index: 0; pointer-events: none;
       background: linear-gradient(to bottom, transparent 0%, var(--light) 100%);
     }
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
@@ -140,16 +140,13 @@
     }
     .hero-bg-grad {
       position: absolute; inset: 0;
-      background: linear-gradient(105deg,
-        rgba(10,9,8,0.72) 0%,
-        rgba(10,9,8,0.28) 55%,
-        rgba(10,9,8,0.04) 100%);
+      background: rgba(10,9,8,0.52);
     }
     @keyframes fadeIn { to { opacity: 1; } }
 
-    .hero-inner { width: 100%; max-width: 1400px; position: relative; z-index: 1; }
+    .hero-inner { width: 100%; max-width: 860px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
     .hero-content {
-      max-width: 740px; display: flex; flex-direction: column;
+      width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;
       opacity: 0; animation: fadeIn 0.1s 2.8s forwards;
     }
     .hero-location {
@@ -163,10 +160,28 @@
     .hero-headline {
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       font-weight: 800;
-      font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+      font-size: clamp(2.2rem, 5.5vw, 5rem);
       line-height: 0.93; letter-spacing: -0.01em;
       text-transform: uppercase;
-      color: var(--cream); margin-bottom: 2.5rem;
+      color: var(--cream); margin-bottom: 1.5rem;
+    }
+    /* Hero phone in hand */
+    .hero-phone-wrap {
+      position: relative;
+      margin: 0.5rem 0 1rem;
+    }
+    .hero-phone-img {
+      width: clamp(260px, 38vw, 480px);
+      display: block;
+      mix-blend-mode: screen;
+    }
+    .hero-phone-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 48%;
+      background: linear-gradient(to bottom, transparent 0%, #0A0F0C 100%);
+      pointer-events: none;
+      z-index: 2;
     }
     .hero-headline .line-1,
     .hero-headline .line-2,
@@ -180,7 +195,7 @@
     }
     .hero-bullets {
       list-style: none; display: flex; flex-direction: column;
-      gap: 0.8rem; margin-bottom: 2.75rem;
+      gap: 0.8rem; margin-bottom: 2rem; align-items: flex-start;
     }
     .hero-bullets li {
       display: flex; align-items: center; gap: 0.75rem;
@@ -192,7 +207,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       flex-shrink: 0; color: var(--sand);
     }
-    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
     .btn-primary {
       background: var(--green); color: var(--white);
@@ -943,6 +958,10 @@
         <span class="line-2 accent">der Objekte verkauft</span>
         <span class="line-3">und Kunden gewinnt.</span>
       </h1>
+      <div class="hero-phone-wrap">
+        <img src="phone-hand-hero.png" alt="Phone in Hand" class="hero-phone-img">
+        <div class="hero-phone-fade"></div>
+      </div>
       <ul class="hero-bullets">
         <li>
           <span class="bullet-icon">
