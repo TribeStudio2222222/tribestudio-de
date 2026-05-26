@@ -625,6 +625,80 @@
       font-size: 0.875rem; color: rgba(245,242,234,0.55); line-height: 1.75;
     }
 
+    /* ===== FAQ ===== */
+    #faq { background: var(--white); padding: 8rem 5rem; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-headline {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--text-dark); line-height: 0.95;
+      letter-spacing: -0.02em; text-align: center; margin-bottom: 3rem;
+    }
+    .faq-cats {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; margin-bottom: 3rem;
+    }
+    .faq-cat {
+      padding: 0.55rem 1.15rem; border-radius: 100px;
+      background: var(--text-dark); color: var(--white);
+      font-size: 0.8rem; font-weight: 500; cursor: pointer;
+      border: none; transition: background 0.2s, color 0.2s;
+      font-family: 'Inter', sans-serif; letter-spacing: 0.01em;
+    }
+    .faq-cat:hover { background: var(--green-deep); }
+    .faq-cat.active { background: var(--sand); color: var(--text-dark); }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item {
+      background: var(--white); border: 1.5px solid var(--light-2);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      padding: 1.4rem 1.6rem; background: none; border: none;
+      cursor: pointer; text-align: left;
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      font-weight: 600; color: var(--text-dark);
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--green); }
+    .faq-chevron {
+      flex-shrink: 0; width: 20px; height: 20px;
+      border: 1.5px solid currentColor; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 1.6rem;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.6rem 1.4rem; }
+    .faq-answer p {
+      font-size: 0.9rem; color: var(--gray-dark); line-height: 1.75;
+    }
+    .faq-contact-card {
+      margin-top: 2.5rem; background: var(--black);
+      border-radius: 18px; padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .faq-contact-text h3 {
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 1.05rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .faq-contact-text p { font-size: 0.85rem; color: var(--gray-light); }
+    .faq-contact-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--sand); color: var(--text-dark);
+      border-radius: 100px; padding: 0.85rem 1.8rem;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none;
+      white-space: nowrap; transition: background 0.2s, transform 0.2s;
+    }
+    .faq-contact-btn:hover { background: var(--sand-light); transform: translateY(-2px); }
+
     /* ===== ÜBER UNS ===== */
     #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
     .ueber-grid {
@@ -1312,6 +1386,116 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <h2 class="faq-headline">Häufige Fragen</h2>
+
+    <div class="faq-cats">
+      <button class="faq-cat active" data-cat="all">Alle</button>
+      <button class="faq-cat" data-cat="ablauf">Ablauf & Buchung</button>
+      <button class="faq-cat" data-cat="produktion">Produktion</button>
+      <button class="faq-cat" data-cat="lieferung">Lieferung</button>
+      <button class="faq-cat" data-cat="preise">Preise & Zahlung</button>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item" data-cat="ablauf">
+        <button class="faq-question">
+          Wie buche ich einen Termin?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Füll einfach das Kontaktformular aus oder schreib uns direkt eine E-Mail. Wir melden uns innerhalb von 24 Stunden und klären alle Details in einem kurzen Gespräch.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="ablauf">
+        <button class="faq-question">
+          Wie weit im Voraus muss ich buchen?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Wir empfehlen eine Vorlaufzeit von 5–10 Werktagen. Für kurzfristige Anfragen versuchen wir flexibel zu reagieren – melde dich einfach und wir schauen gemeinsam, was möglich ist.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="produktion">
+        <button class="faq-question">
+          Was passiert am Shoot Day?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Wir kommen mit dem kompletten Equipment zum Objekt – Kamera, Drohne, Licht. Du musst nur die Tür aufmachen. Wir übernehmen Planung, Aufbau und Durchführung vollständig.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="produktion">
+        <button class="faq-question">
+          Welche Art von Immobilien filmt ihr?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Wir arbeiten mit Einfamilienhäusern, Eigentumswohnungen, Luxusobjekten und Gewerbeimmobilien. Unser Fokus liegt auf Objekten, die eine hochwertige Inszenierung verdienen.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="lieferung">
+        <button class="faq-question">
+          Wie schnell erhalte ich das fertige Material?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Du erhältst dein fertiges Material in der Regel innerhalb von 5 Werktagen nach dem Shoot Day. Das Material ist geschnitten, gebranded und direkt bereit zum Posten.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="lieferung">
+        <button class="faq-question">
+          In welchem Format wird das Material geliefert?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Standardmäßig liefern wir im Format 9:16 für Reels und Stories sowie 16:9 für Exposés und Webseiten. Auf Wunsch passen wir die Formate an deine Plattform an.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="preise">
+        <button class="faq-question">
+          Wann ist die Zahlung fällig?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>50 % werden bei Buchung fällig, die restlichen 50 % nach Lieferung des fertigen Materials. Wir akzeptieren Überweisung und auf Anfrage auch andere Zahlungsarten.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="preise">
+        <button class="faq-question">
+          Gibt es Rabatte bei mehreren Objekten?
+          <span class="faq-chevron">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer"><p>Ja. Für Maklerbüros und Investoren mit regelmäßigem Bedarf bieten wir individuelle Konditionen. Sprich uns einfach an – wir finden eine Lösung, die für beide Seiten passt.</p></div>
+      </div>
+
+    </div>
+
+    <div class="faq-contact-card">
+      <div class="faq-contact-text">
+        <h3>Noch Fragen offen?</h3>
+        <p>Melde dich direkt – wir antworten innerhalb von 24 Stunden.</p>
+      </div>
+      <a href="#kontakt" class="faq-contact-btn">
+        Kontakt aufnehmen
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ÜBER UNS -->
 <section id="ueber-uns">
   <div class="ueber-grid">
@@ -1728,6 +1912,28 @@
   phoneThumbs.forEach((t, i) => t.addEventListener('click', () => setPhoneActive(i)));
   document.getElementById('phonePrev')?.addEventListener('click', () => setPhoneActive((phoneActive - 1 + 5) % 5));
   document.getElementById('phoneNext')?.addEventListener('click', () => setPhoneActive((phoneActive + 1) % 5));
+
+  // FAQ accordion + category filter
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('.faq-cat').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.faq-cat').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const cat = this.dataset.cat;
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('open');
+        item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
 
   // Portfolio accordion
   document.querySelectorAll('.acc-card').forEach(card => {
