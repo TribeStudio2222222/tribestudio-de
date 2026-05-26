@@ -467,18 +467,24 @@
     }
     .angebote-list {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem; max-width: 1100px; margin: 0 auto;
-      align-items: start;
+      gap: 0; max-width: 1100px; margin: 0 auto;
+      align-items: center;
     }
     /* Card */
     .angebot-row {
       display: flex; flex-direction: column;
-      border-radius: 20px; overflow: hidden;
+      border-radius: 16px; overflow: hidden;
       background: #161618;
       border: 1px solid rgba(255,255,255,0.08);
       position: relative;
     }
-    .angebot-row.popular { border-color: var(--sand); }
+    .angebot-row.popular {
+      border-color: var(--sand);
+      margin-top: -2.5rem;
+      margin-bottom: -2.5rem;
+      z-index: 2;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
     .angebot-popular-badge {
       position: absolute; top: 0; left: 50%; transform: translateX(-50%);
       background: var(--sand); color: var(--text-dark);
@@ -487,35 +493,17 @@
       letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
       z-index: 2;
     }
-    /* Decorative header */
+    /* Video header */
     .angebot-deco {
-      height: 190px; position: relative;
+      height: 220px; position: relative;
       background: #0f0f11;
-      display: flex; align-items: center; justify-content: center;
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      overflow: hidden;
+      overflow: hidden; flex-shrink: 0;
     }
-    .angebot-deco::before {
-      content: '';
-      position: absolute; bottom: 16px; left: 16px;
-      width: 36px; height: 36px;
-      border-left: 1px solid rgba(217,203,179,0.35);
-      border-bottom: 1px solid rgba(217,203,179,0.35);
+    .angebot-deco video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
-    .angebot-deco::after {
-      content: '';
-      position: absolute; top: 16px; right: 16px;
-      width: 36px; height: 36px;
-      border-right: 1px solid rgba(217,203,179,0.35);
-      border-top: 1px solid rgba(217,203,179,0.35);
-    }
-    .angebot-deco-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-weight: 600;
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      color: rgba(245,242,234,0.13);
-      line-height: 1.1; text-align: center; pointer-events: none;
-    }
+    .angebot-row.popular .angebot-deco { height: 260px; }
     /* Content */
     .angebot-content {
       padding: 1.5rem 1.75rem 2rem;
@@ -1119,7 +1107,9 @@
     <!-- STARTER -->
     <div class="angebot-row">
       <div class="angebot-deco">
-        <span class="angebot-deco-title">Starter<br>Paket</span>
+        <video autoplay muted loop playsinline>
+          <source src="angebot-1.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="angebot-content">
         <div class="angebot-meta">
@@ -1144,7 +1134,9 @@
     <div class="angebot-row popular">
       <div class="angebot-popular-badge">Beliebt</div>
       <div class="angebot-deco">
-        <span class="angebot-deco-title">Pro<br>Paket</span>
+        <video autoplay muted loop playsinline>
+          <source src="angebot-2.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="angebot-content">
         <div class="angebot-meta">
@@ -1169,7 +1161,9 @@
     <!-- INDIVIDUELL -->
     <div class="angebot-row">
       <div class="angebot-deco">
-        <span class="angebot-deco-title">Individual<br>Paket</span>
+        <video autoplay muted loop playsinline>
+          <source src="angebot-3.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="angebot-content">
         <div class="angebot-meta">
