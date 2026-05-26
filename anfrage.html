@@ -238,13 +238,14 @@
 
     /* Add-on cards */
     .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .addon-option { position: relative; cursor: pointer; }
+    .addon-option { position: relative; cursor: pointer; display: flex; flex-direction: column; }
     .addon-option input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
     .addon-card {
       background: var(--input-bg); border: 1px solid var(--input-border);
       border-radius: 12px; padding: 1.2rem 1.4rem;
       display: flex; align-items: flex-start; gap: 1rem;
       transition: border-color 0.2s, background 0.2s;
+      height: 100%;
     }
     .addon-option input:checked + .addon-card {
       border-color: var(--sand);
