@@ -274,6 +274,36 @@
       display: inline-block; margin-top: 0.4rem;
     }
 
+    /* Custom builder */
+    .custom-builder {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(217,203,179,0.08);
+      display: none;
+    }
+    .custom-builder-hint {
+      font-size: 0.82rem; color: rgba(217,203,179,0.4); margin-bottom: 1.2rem; line-height: 1.5;
+    }
+    .paket-card-custom-text {
+      font-size: 0.8rem; color: rgba(217,203,179,0.45); line-height: 1.55; margin-top: 0.4rem;
+    }
+
+    /* KI Rooms selector */
+    .ki-rooms-row {
+      grid-column: 1 / -1;
+      background: rgba(217,203,179,0.04); border: 1px solid rgba(217,203,179,0.1);
+      border-radius: 10px; padding: 1rem 1.2rem;
+      display: none; align-items: center; gap: 1rem;
+    }
+    .ki-rooms-row label {
+      font-size: 0.82rem; color: rgba(217,203,179,0.55); white-space: nowrap; flex-shrink: 0;
+    }
+    .ki-rooms-row select {
+      background: var(--input-bg); color: var(--cream);
+      border: 1px solid var(--input-border); border-radius: 8px;
+      padding: 0.5rem 0.8rem; font-family: 'Inter', sans-serif;
+      font-size: 0.82rem; cursor: pointer; outline: none;
+    }
+
     /* Branding selector */
     .branding-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .branding-option { position: relative; cursor: pointer; }
@@ -446,7 +476,7 @@
               <ul class="paket-card-features">
                 <li>Signature Listing Reel</li>
                 <li>Drohnenaufnahmen</li>
-                <li>Carousel Insta</li>
+                <li>Carousel Pro</li>
               </ul>
             </div>
           </label>
@@ -459,7 +489,7 @@
               <ul class="paket-card-features">
                 <li>Alles aus Starter</li>
                 <li>KI Staging (bis zu 5 Räume)</li>
-                <li>Insta Automation</li>
+                <li>Instagram Automation</li>
                 <li>Meta Ads Beratung</li>
                 <li>Umgebungsaufnahmen</li>
                 <li>Standard Listing Website</li>
@@ -482,21 +512,120 @@
           </label>
 
           <label class="paket-option">
-            <input type="radio" name="paket" value="Custom">
+            <input type="radio" name="paket" value="Custom" id="paket-custom">
             <div class="paket-card">
               <div class="paket-card-num">Paket 04</div>
               <div class="paket-card-name">Custom</div>
-              <ul class="paket-card-features">
-                <li>Alles aus Premium</li>
-                <li>Laufende Betreuung</li>
-                <li>Mehrere Objekte &amp; Formate</li>
-                <li>Exklusiv-Partnerschaft</li>
-                <li>3D Haustour</li>
-              </ul>
+              <p class="paket-card-custom-text">Stelle dir dein Paket nach deinen Bedürfnissen zusammen – wähle im nächsten Schritt deine Leistungen.</p>
             </div>
           </label>
 
         </div>
+
+        <!-- Custom Builder (erscheint wenn Custom gewählt) -->
+        <div class="custom-builder" id="custom-builder">
+          <p class="custom-builder-hint">Wähle die Leistungen für dein individuelles Paket:</p>
+          <div class="addons-grid">
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Signature Listing Reel">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Signature Listing Reel</div><div class="addon-desc">Cinematisches Hauptvideo deiner Immobilie.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Drohnenaufnahmen">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Drohnenaufnahmen</div><div class="addon-desc">Luftaufnahmen für maximale Außenwirkung.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Carousel Pro">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Carousel Pro</div><div class="addon-desc">Hochwertiger Bild-/Video-Carousel für Instagram & Co.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Instagram Automation">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Instagram Automation</div><div class="addon-desc">Automatisiertes Posting und Planung für deinen Kanal.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="KI Staging">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">KI Staging</div><div class="addon-desc">Virtuelle Einrichtung leerer Räume, realistisch und hochwertig.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Umgebungsaufnahmen">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Umgebungsaufnahmen</div><div class="addon-desc">Lage & Infrastruktur cineastisch in Szene gesetzt.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Meta Ads Management">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Meta Ads Management</div><div class="addon-desc">Verwaltung und Optimierung deiner bezahlten Kampagnen.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Makler Branding Video">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Makler Branding Video</div><div class="addon-desc">Persönlicher Imagefilm für deine Marke als Makler.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Custom Listing Website">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Custom Listing Website</div><div class="addon-desc">Individuelle Landingpage für dein Objekt.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="3D Haustour">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">3D Haustour</div><div class="addon-desc">Vollständige virtuelle Begehung, interaktiv und immersiv.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Laufende Betreuung">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Laufende Betreuung</div><div class="addon-desc">Monatliche Betreuung für mehrere Objekte & Formate.</div></div>
+              </div>
+            </label>
+
+            <label class="addon-option">
+              <input type="checkbox" name="custom_items" value="Exklusiv-Partnerschaft">
+              <div class="addon-card">
+                <div class="addon-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="addon-info"><div class="addon-name">Exklusiv-Partnerschaft</div><div class="addon-desc">Langfristige Zusammenarbeit mit exklusiven Konditionen.</div></div>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
       </div>
 
       <!-- 03 Objekt -->
@@ -561,7 +690,7 @@
           </label>
 
           <label class="addon-option">
-            <input type="checkbox" name="addons" value="KI Staging (pro Raum)">
+            <input type="checkbox" name="addons" value="KI Staging" id="ki-staging-check">
             <div class="addon-card">
               <div class="addon-check">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1816" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -572,6 +701,21 @@
               </div>
             </div>
           </label>
+          <div class="ki-rooms-row" id="ki-rooms-row">
+            <label for="ki-rooms">Anzahl der Räume:</label>
+            <select id="ki-rooms" name="ki_staging_rooms">
+              <option value="1">1 Raum</option>
+              <option value="2">2 Räume</option>
+              <option value="3">3 Räume</option>
+              <option value="4">4 Räume</option>
+              <option value="5">5 Räume</option>
+              <option value="6">6 Räume</option>
+              <option value="7">7 Räume</option>
+              <option value="8">8 Räume</option>
+              <option value="9">9 Räume</option>
+              <option value="10">10 Räume</option>
+            </select>
+          </div>
 
           <label class="addon-option">
             <input type="checkbox" name="addons" value="Umgebungsvideo">
@@ -598,18 +742,18 @@
         <div class="branding-selector">
 
           <label class="branding-option">
-            <input type="radio" name="branding" value="Makler">
+            <input type="radio" name="branding" value="Makler" class="branding-radio">
             <div class="branding-card">
               <div class="branding-card-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(217,203,179,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <div class="branding-card-name">Für mich als Makler</div>
-              <div class="branding-card-desc">Persönliches Imagefilm – dein Gesicht, deine Geschichte, deine Marke.</div>
+              <div class="branding-card-desc">Persönlicher Imagefilm – dein Gesicht, deine Geschichte, deine Marke.</div>
             </div>
           </label>
 
           <label class="branding-option">
-            <input type="radio" name="branding" value="Unternehmen">
+            <input type="radio" name="branding" value="Unternehmen" class="branding-radio">
             <div class="branding-card">
               <div class="branding-card-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(217,203,179,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
@@ -620,6 +764,7 @@
           </label>
 
         </div>
+        <button type="button" id="branding-clear" onclick="clearBranding()" style="display:none; margin-top:1rem; background:none; border:none; color:rgba(217,203,179,0.35); font-size:0.78rem; cursor:pointer; padding:0; letter-spacing:0.04em;">× Auswahl zurücksetzen</button>
       </div>
 
       <!-- 06 Kontakt -->
@@ -706,7 +851,43 @@
   const paketParam = params.get('paket');
   if (paketParam) {
     const radio = document.querySelector(`input[name="paket"][value="${paketParam}"]`);
-    if (radio) radio.checked = true;
+    if (radio) {
+      radio.checked = true;
+      if (paketParam === 'Custom') document.getElementById('custom-builder').style.display = 'block';
+    }
+  }
+
+  // Show/hide custom builder when Custom paket is selected
+  document.querySelectorAll('input[name="paket"]').forEach(r => {
+    r.addEventListener('change', function() {
+      document.getElementById('custom-builder').style.display = this.value === 'Custom' ? 'block' : 'none';
+    });
+  });
+
+  // KI Staging room count dropdown
+  document.getElementById('ki-staging-check').addEventListener('change', function() {
+    const row = document.getElementById('ki-rooms-row');
+    row.style.display = this.checked ? 'flex' : 'none';
+  });
+
+  // Branding radio – allow deselect by clicking already-checked option
+  document.querySelectorAll('.branding-radio').forEach(radio => {
+    radio.addEventListener('mousedown', function() {
+      this._wasChecked = this.checked;
+    });
+    radio.addEventListener('click', function() {
+      if (this._wasChecked) {
+        this.checked = false;
+        document.getElementById('branding-clear').style.display = 'none';
+      } else {
+        document.getElementById('branding-clear').style.display = 'inline-block';
+      }
+    });
+  });
+
+  function clearBranding() {
+    document.querySelectorAll('.branding-radio').forEach(r => r.checked = false);
+    document.getElementById('branding-clear').style.display = 'none';
   }
 
   // Load animation
