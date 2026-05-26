@@ -345,6 +345,11 @@
 
     /* ===== ERFOLGE ===== */
     #erfolge { background: var(--light); padding: 6rem 5rem 12rem; overflow: hidden; position: relative; }
+    .prozess-bottom-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 160px; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, var(--white) 100%);
+    }
     .erfolge-bottom-fade {
       position: absolute; bottom: 0; left: 0; right: 0;
       height: 180px; pointer-events: none;
@@ -1412,6 +1417,7 @@
 
     </div>
   </div>
+  <div class="prozess-bottom-fade"></div>
 </section>
 
 <!-- FAQ -->
