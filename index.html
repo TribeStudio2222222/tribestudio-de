@@ -933,16 +933,13 @@
       background: linear-gradient(to right, transparent, rgba(217,203,179,0.28), transparent);
     }
     .footer-main {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 3rem; margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: flex-end;
+      gap: 4rem; margin-bottom: 1.5rem;
     }
+    .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
     .footer-brand-logo { height: 480px; width: auto; display: block; }
     .footer-right {
       display: flex; align-items: flex-start; gap: 3rem;
-      justify-content: center;
-    }
-    .footer-right-top {
-      display: flex; flex-direction: column; align-items: center; gap: 2rem;
     }
     .footer-cta-btn {
       display: inline-flex; align-items: center; gap: 0.55rem;
@@ -1530,17 +1527,17 @@
 <footer>
   <div class="footer-main">
 
-    <!-- Brand -->
-    <!-- Logo -->
-    <img src="logo-ts.png" alt="Tribe Studio" class="footer-brand-logo">
-
-    <!-- Button + Links + Socials -->
-    <div class="footer-right">
+    <!-- Logo + Button -->
+    <div class="footer-brand">
+      <img src="logo-ts.png" alt="Tribe Studio" class="footer-brand-logo">
       <a href="#kontakt" class="footer-cta-btn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         Projekt starten
       </a>
+    </div>
 
+    <!-- Quick Links + Socials -->
+    <div class="footer-right">
       <div>
         <p class="footer-nav-title">Quick Links</p>
         <ul class="footer-nav-links">
