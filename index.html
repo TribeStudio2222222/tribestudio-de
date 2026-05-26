@@ -450,6 +450,98 @@
       font-size: 0.5rem; color: rgba(255,255,255,0.2); letter-spacing: 0.05em;
     }
 
+    /* ===== ANGEBOTE ===== */
+    #angebote { background: var(--white); padding: 8rem 5rem; }
+    .angebote-header { text-align: center; margin-bottom: 4.5rem; }
+    .angebote-headline {
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      color: var(--text-dark); line-height: 1.05;
+      letter-spacing: -0.025em; margin-top: 0.75rem;
+    }
+    .angebote-headline em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 600; letter-spacing: 0.01em;
+    }
+    .angebote-list {
+      display: flex; flex-direction: column; gap: 1.5rem;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .angebot-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(26,26,26,0.08);
+      min-height: 380px;
+    }
+    .angebot-img {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green) 100%);
+    }
+    .angebot-img-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.75rem;
+    }
+    .angebot-img-placeholder svg { color: rgba(217,203,179,0.25); }
+    .angebot-img-placeholder span {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(217,203,179,0.3);
+    }
+    .angebot-img-label {
+      position: absolute; bottom: 1rem; left: 1rem;
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(10px);
+      color: rgba(255,255,255,0.8); font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.05em;
+      padding: 0.35rem 0.85rem; border-radius: 100px;
+    }
+    .angebot-content {
+      padding: 3rem 3rem 3rem 3.5rem;
+      display: flex; flex-direction: column;
+      justify-content: center; background: var(--white);
+    }
+    .angebot-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--text-dark);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; color: var(--white); flex-shrink: 0;
+    }
+    .angebot-name {
+      font-family: 'DM Sans', sans-serif; font-weight: 800;
+      font-size: 1.65rem; color: var(--text-dark);
+      letter-spacing: -0.01em; margin-bottom: 0.4rem;
+    }
+    .angebot-desc {
+      font-size: 0.9rem; color: var(--gray-dark);
+      line-height: 1.6; margin-bottom: 1.5rem; max-width: 360px;
+    }
+    .angebot-price {
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 1.5rem; color: var(--text-dark);
+      margin-bottom: 1.75rem; display: flex; align-items: baseline; gap: 0.4rem;
+    }
+    .angebot-price span {
+      font-size: 0.85rem; font-weight: 400; color: var(--gray-dark);
+    }
+    .angebot-features {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 0.7rem; margin-bottom: 2rem;
+    }
+    .angebot-features li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--text-dark); line-height: 1.4;
+    }
+    .angebot-features li svg { flex-shrink: 0; color: var(--green); }
+    .angebot-cta {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--text-dark); color: var(--white);
+      border-radius: 12px; padding: 1rem 1.5rem;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: background 0.3s, transform 0.3s; letter-spacing: 0.02em;
+      margin-top: auto;
+    }
+    .angebot-cta:hover { background: var(--green-deep); transform: translateY(-2px); }
+
     /* ===== ÜBER UNS ===== */
     #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
     .ueber-grid {
@@ -789,6 +881,10 @@
       .hero-cta-row { flex-direction: column; gap: 0.75rem; }
       .hero-cta-row .btn-primary,
       .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
+      #angebote { padding: 5rem 1.5rem; }
+      .angebot-row { grid-template-columns: 1fr; min-height: auto; }
+      .angebot-img { min-height: 220px; }
+      .angebot-content { padding: 2rem 1.75rem; }
       #erfolge { padding: 5rem 1.5rem; }
       .erfolge-inner { grid-template-columns: 1fr; }
       .phone-main { width: clamp(180px, 52vw, 240px); }
@@ -1007,6 +1103,109 @@
         <span class="acc-loc">Heidelberg · Kampagne</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ANGEBOTE -->
+<section id="angebote">
+  <div class="angebote-header">
+    <span class="section-tag">Leistungen</span>
+    <h2 class="angebote-headline">Pakete gebaut für <em>echtes</em><br>Wachstum.</h2>
+  </div>
+
+  <div class="angebote-list">
+
+    <!-- STARTER -->
+    <div class="angebot-row">
+      <div class="angebot-img">
+        <div class="angebot-img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>Bild folgt</span>
+        </div>
+        <div class="angebot-img-label">@tribestudio.de</div>
+      </div>
+      <div class="angebot-content">
+        <div class="angebot-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="angebot-name">Starter</div>
+        <div class="angebot-desc">Der perfekte Einstieg – eine einzelne Produktion, maximale Wirkung.</div>
+        <div class="angebot-price">Auf Anfrage <span>/ Einzelproduktion</span></div>
+        <ul class="angebot-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cinematic Objektfilm (60–90 Sek.)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2 Social-Media-Reels</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Drohnenaufnahmen</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 Korrekturschleife inklusive</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fertig in 5 Werktagen</li>
+        </ul>
+        <a href="mailto:support@tribestudio.de?subject=Anfrage%20Starter-Paket" class="angebot-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Projekt starten
+        </a>
+      </div>
+    </div>
+
+    <!-- PRO -->
+    <div class="angebot-row">
+      <div class="angebot-img">
+        <div class="angebot-img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>Bild folgt</span>
+        </div>
+        <div class="angebot-img-label">@tribestudio.de</div>
+      </div>
+      <div class="angebot-content">
+        <div class="angebot-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="angebot-name">Pro</div>
+        <div class="angebot-desc">Das komplette Paket für Makler, die auf Social Media sichtbar sein wollen.</div>
+        <div class="angebot-price">Auf Anfrage <span>/ Komplettpaket</span></div>
+        <ul class="angebot-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alles aus Starter</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Personal Brand Video</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>5 optimierte Social Reels</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Individuelle Landingpage</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Content-Strategie &amp; Posting-Plan</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unbegrenzte Korrekturen</li>
+        </ul>
+        <a href="mailto:support@tribestudio.de?subject=Anfrage%20Pro-Paket" class="angebot-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Projekt starten
+        </a>
+      </div>
+    </div>
+
+    <!-- INDIVIDUELL -->
+    <div class="angebot-row">
+      <div class="angebot-img">
+        <div class="angebot-img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>Bild folgt</span>
+        </div>
+        <div class="angebot-img-label">@tribestudio.de</div>
+      </div>
+      <div class="angebot-content">
+        <div class="angebot-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="angebot-name">Individuell</div>
+        <div class="angebot-desc">Maßgeschneiderte Lösungen für Bauträger und Makler mit mehreren Objekten.</div>
+        <div class="angebot-price">Auf Anfrage <span>/ Custom</span></div>
+        <ul class="angebot-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Vollständige Kampagnenplanung</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Laufende Betreuung (monatlich)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mehrere Objekte &amp; Formate</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Exklusiv-Partnerschaft möglich</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Direkter Ansprechpartner</li>
+        </ul>
+        <a href="mailto:support@tribestudio.de?subject=Individuelle%20Anfrage" class="angebot-cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Anfrage stellen
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
