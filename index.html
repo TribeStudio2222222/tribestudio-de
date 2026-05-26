@@ -23,12 +23,12 @@
       --green-pale: #8FB09E;
       --sand: #D9CBB3;
       --sand-light: #EDE6D8;
-      --cream: #F5F2EA;
+      --cream: #E5DFD3;
       --black: #0A0F0C;
       --dark: #0d1208;
       --white: #FFFFFF;
-      --light: #F5F2EA;
-      --light-2: #E8E4DB;
+      --light: #E5DFD3;
+      --light-2: #D9D2C5;
       --gray-dark: #6B6560;
       --gray-light: #9E9890;
       --text-dark: #1A1816;
@@ -391,7 +391,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 45%;
-      background: linear-gradient(to bottom, transparent 0%, #F5F2EA 100%);
+      background: linear-gradient(to bottom, transparent 0%, var(--light) 100%);
       pointer-events: none;
       z-index: 2;
     }
@@ -430,7 +430,7 @@
       position: absolute;
       bottom: 0; left: -10px; right: -10px;
       height: 38%;
-      background: linear-gradient(to bottom, transparent 0%, #F5F2EA 100%);
+      background: linear-gradient(to bottom, transparent 0%, var(--light) 100%);
       pointer-events: none;
       z-index: 5;
     }
@@ -573,23 +573,18 @@
     .angebot-row.popular .angebot-cta:hover { background: var(--sand-light); }
 
     /* ===== PROZESS ===== */
-    #prozess { background: var(--black); padding: 8rem 5rem; position: relative; }
-    #prozess::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 180px; pointer-events: none;
-      background: linear-gradient(to bottom, var(--light) 0%, var(--black) 100%);
-    }
+    #prozess { background: var(--light); padding: 8rem 5rem; position: relative; }
     .prozess-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
     .prozess-header { margin-bottom: 3.5rem; }
     .prozess-headline {
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       font-weight: 800; text-transform: uppercase;
       font-size: clamp(2rem, 4.5vw, 3.8rem);
-      color: var(--white); line-height: 0.95;
+      color: var(--text-dark); line-height: 0.95;
       letter-spacing: -0.02em; margin-bottom: 1rem;
     }
     .prozess-sub {
-      font-size: 1rem; color: rgba(245,242,234,0.45); line-height: 1.7;
+      font-size: 1rem; color: var(--gray-dark); line-height: 1.7;
     }
     .prozess-steps {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -627,7 +622,7 @@
       line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.65rem;
     }
     .prozess-step-desc {
-      font-size: 0.875rem; color: rgba(245,242,234,0.45); line-height: 1.75;
+      font-size: 0.875rem; color: rgba(245,242,234,0.55); line-height: 1.75;
     }
 
     /* ===== ÜBER UNS ===== */
