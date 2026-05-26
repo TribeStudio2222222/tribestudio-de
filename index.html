@@ -572,6 +572,64 @@
     }
     .angebot-row.popular .angebot-cta:hover { background: var(--sand-light); }
 
+    /* ===== PROZESS ===== */
+    #prozess { background: var(--black); padding: 8rem 5rem; position: relative; }
+    #prozess::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 180px; pointer-events: none;
+      background: linear-gradient(to bottom, var(--light) 0%, var(--black) 100%);
+    }
+    .prozess-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .prozess-header { margin-bottom: 3.5rem; }
+    .prozess-headline {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      color: var(--white); line-height: 0.95;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .prozess-sub {
+      font-size: 1rem; color: rgba(245,242,234,0.45); line-height: 1.7;
+    }
+    .prozess-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .prozess-card {
+      background: #1a1a1c; border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex; flex-direction: column;
+    }
+    .prozess-visual {
+      height: 190px; position: relative; overflow: hidden;
+      background: #111113;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .prozess-visual::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sand) 0%, transparent 80%);
+    }
+    .prozess-visual svg { color: rgba(217,203,179,0.12); }
+    .prozess-card-body { padding: 1.5rem; }
+    .prozess-step-badge {
+      display: inline-flex; background: var(--sand); color: var(--text-dark);
+      padding: 0.28rem 0.9rem; border-radius: 100px;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .prozess-step-title {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800; text-transform: uppercase;
+      font-size: 1.15rem; color: var(--white);
+      line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.65rem;
+    }
+    .prozess-step-desc {
+      font-size: 0.875rem; color: rgba(245,242,234,0.45); line-height: 1.75;
+    }
+
     /* ===== ÜBER UNS ===== */
     #ueber-uns { background: var(--green-deep); padding: 8rem 5rem; }
     .ueber-grid {
@@ -1195,6 +1253,67 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- PROZESS -->
+<section id="prozess">
+  <div class="prozess-inner">
+    <div class="prozess-header">
+      <h2 class="prozess-headline">Dein Aufwand geht gegen Null –<br>wir übernehmen alles für dich.</h2>
+      <p class="prozess-sub">Von der ersten Anfrage bis zur fertigen Lieferung führen wir dich durch jeden Schritt.</p>
+    </div>
+    <div class="prozess-steps">
+
+      <!-- Schritt 1 -->
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 1</span>
+          <h3 class="prozess-step-title">Projekt anfragen</h3>
+          <p class="prozess-step-desc">Schreib uns kurz über das Kontaktformular oder per Mail – wir melden uns innerhalb von 24 Stunden.</p>
+        </div>
+      </div>
+
+      <!-- Schritt 2 -->
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 2</span>
+          <h3 class="prozess-step-title">Unser Gespräch</h3>
+          <p class="prozess-step-desc">Im kurzen Call klären wir Objekt, Ziele und Stil. Du gibst uns alles, was wir für die Planung brauchen.</p>
+        </div>
+      </div>
+
+      <!-- Schritt 3 -->
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 3</span>
+          <h3 class="prozess-step-title">Shoot Day</h3>
+          <p class="prozess-step-desc">Wir kommen zum Objekt, kümmern uns um alles – Kamera, Drohne, Licht. Du musst nur die Tür aufmachen.</p>
+        </div>
+      </div>
+
+      <!-- Schritt 4 -->
+      <div class="prozess-card">
+        <div class="prozess-visual">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="prozess-card-body">
+          <span class="prozess-step-badge">Schritt 4</span>
+          <h3 class="prozess-step-title">Delivery</h3>
+          <p class="prozess-step-desc">Fertig bearbeitetes Material landet bei dir – geschnitten, gebranded, bereit zum Posten. In 5 Werktagen.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
