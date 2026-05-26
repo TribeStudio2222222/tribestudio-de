@@ -274,6 +274,31 @@
       display: inline-block; margin-top: 0.4rem;
     }
 
+    /* Branding selector */
+    .branding-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .branding-option { position: relative; cursor: pointer; }
+    .branding-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .branding-card {
+      background: var(--input-bg); border: 1px solid var(--input-border);
+      border-radius: 12px; padding: 1.6rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .branding-option input:checked + .branding-card {
+      border-color: var(--sand);
+      background: rgba(217,203,179,0.07);
+    }
+    .branding-card-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(217,203,179,0.07); border: 1px solid rgba(217,203,179,0.1);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 0.2rem;
+    }
+    .branding-card-name {
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--cream);
+    }
+    .branding-card-desc { font-size: 0.78rem; color: rgba(217,203,179,0.45); line-height: 1.5; }
+
     /* Submit */
     .form-submit-wrap {
       margin-top: 3rem; display: flex; align-items: center; gap: 2rem;
@@ -334,6 +359,7 @@
       .form-row, .paket-selector { grid-template-columns: 1fr; }
       .form-row-2 { grid-template-columns: 1fr; }
       .addons-grid { grid-template-columns: 1fr; }
+      .branding-selector { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .form-submit-wrap { flex-direction: column; align-items: flex-start; }
@@ -423,7 +449,7 @@
               <div class="paket-card-name">Starter</div>
               <ul class="paket-card-features">
                 <li>Signature Listing Reel</li>
-                <li>Drone Video</li>
+                <li>Drohnenaufnahmen</li>
                 <li>Carousel Insta</li>
               </ul>
             </div>
@@ -436,9 +462,10 @@
               <div class="paket-card-name">Pro</div>
               <ul class="paket-card-features">
                 <li>Alles aus Starter</li>
-                <li>KI Staging</li>
+                <li>KI Staging (bis zu 5 Räume)</li>
                 <li>Insta Automation</li>
                 <li>Meta Ads Beratung</li>
+                <li>Umgebungsaufnahmen</li>
                 <li>Standard Listing Website</li>
               </ul>
             </div>
@@ -452,6 +479,7 @@
               <ul class="paket-card-features">
                 <li>Alles aus Pro</li>
                 <li>Makler Branding Video</li>
+                <li>Meta Ads Management</li>
                 <li>Custom Listing Website</li>
               </ul>
             </div>
@@ -467,6 +495,7 @@
                 <li>Laufende Betreuung</li>
                 <li>Mehrere Objekte &amp; Formate</li>
                 <li>Exklusiv-Partnerschaft</li>
+                <li>3D Haustour</li>
               </ul>
             </div>
           </label>
@@ -565,9 +594,41 @@
         </div>
       </div>
 
-      <!-- 05 Kontakt -->
+      <!-- 05 Branding Video -->
       <div class="form-step">
         <span class="step-label">05</span>
+        <h2 class="step-title">Branding Video</h2>
+        <p style="font-size: 0.88rem; color: rgba(217,203,179,0.4); margin-bottom: 1.5rem; line-height: 1.6;">Möchtest du ein Branding Video für dich als Makler oder für dein Unternehmen? (Optional)</p>
+        <div class="branding-selector">
+
+          <label class="branding-option">
+            <input type="radio" name="branding" value="Makler">
+            <div class="branding-card">
+              <div class="branding-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(217,203,179,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="branding-card-name">Für mich als Makler</div>
+              <div class="branding-card-desc">Persönliches Imagefilm – dein Gesicht, deine Geschichte, deine Marke.</div>
+            </div>
+          </label>
+
+          <label class="branding-option">
+            <input type="radio" name="branding" value="Unternehmen">
+            <div class="branding-card">
+              <div class="branding-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(217,203,179,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+              </div>
+              <div class="branding-card-name">Für mein Unternehmen</div>
+              <div class="branding-card-desc">Unternehmensfilm für dein Büro, dein Team oder deine Agentur.</div>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- 06 Kontakt -->
+      <div class="form-step">
+        <span class="step-label">06</span>
         <h2 class="step-title">Deine Kontaktdaten</h2>
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div class="form-row-2">

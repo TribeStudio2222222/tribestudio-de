@@ -246,9 +246,30 @@
     .paket-row.popular .paket-cta { background: var(--sand); color: var(--black); border-color: var(--sand); }
     .paket-row.popular .paket-cta:hover { background: var(--sand-light); }
 
+    .paket-3d-haustour {
+      grid-column: 2 / -1;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(217,203,179,0.08);
+      padding-top: 1.5rem;
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+    .paket-3d-haustour-icon {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(217,203,179,0.07); border: 1px solid rgba(217,203,179,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .paket-3d-haustour-label {
+      font-size: 0.9rem; font-weight: 600; color: var(--sand);
+      letter-spacing: 0.03em;
+    }
+    .paket-3d-haustour-desc {
+      font-size: 0.78rem; color: rgba(217,203,179,0.4); margin-top: 0.2rem;
+    }
+
     @media (max-width: 900px) {
       .paket-row { grid-template-columns: 60px 1fr; grid-template-rows: auto auto auto; gap: 1.5rem; }
       .paket-cta-wrap { grid-column: 2; }
+      .paket-3d-haustour { grid-column: 2; }
       #pakete { padding: 6rem 2rem; }
     }
 
@@ -525,7 +546,7 @@
       </div>
       <ul class="paket-features">
         <li>Signature Listing Reel</li>
-        <li>Drone Video</li>
+        <li>Drohnenaufnahmen</li>
         <li>Carousel Insta</li>
       </ul>
       <div class="paket-cta-wrap">
@@ -546,9 +567,10 @@
       </div>
       <ul class="paket-features">
         <li class="inherited">Alles aus Paket 1</li>
-        <li>KI Staging</li>
+        <li>KI Staging (bis zu 5 Räume)</li>
         <li>Insta Automation</li>
         <li>Meta Ads Beratung</li>
+        <li>Umgebungsaufnahmen</li>
         <li>Standard Listing Website</li>
       </ul>
       <div class="paket-cta-wrap">
@@ -570,6 +592,7 @@
       <ul class="paket-features">
         <li class="inherited">Alles aus Paket 2</li>
         <li>Makler Branding Video</li>
+        <li>Meta Ads Management</li>
         <li>Custom Listing Website</li>
       </ul>
       <div class="paket-cta-wrap">
@@ -594,6 +617,15 @@
       </ul>
       <div class="paket-cta-wrap">
         <a href="anfrage.html?paket=Custom" class="paket-cta">Anfragen →</a>
+      </div>
+      <div class="paket-3d-haustour">
+        <div class="paket-3d-haustour-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(217,203,179,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="paket-3d-haustour-label">3D Haustour</div>
+          <div class="paket-3d-haustour-desc">Vollständige virtuelle Begehung – interaktiv und immersiv für jeden Interessenten.</div>
+        </div>
       </div>
     </div>
 
