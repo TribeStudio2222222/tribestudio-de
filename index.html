@@ -921,32 +921,38 @@
     .booking-cta { font-size: 0.95rem; padding: 1.1rem 2.75rem; }
 
     /* ===== FOOTER ===== */
-    footer { background: var(--black); padding: 6rem 5rem 2.5rem; position: relative; }
+    footer { background: var(--black); padding: 3.5rem 5rem 2rem; position: relative; }
     footer::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(to right, transparent, rgba(217,203,179,0.28), transparent);
     }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .footer-logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; height: 36px; }
-    .footer-logo img { height: 36px; width: auto; }
-    .footer-logo-text {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
-      font-weight: 500; letter-spacing: 0.2em; color: var(--cream);
+    .footer-main {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 6rem; align-items: start; margin-bottom: 3rem;
     }
-    .footer-desc { font-size: 0.88rem; color: rgba(217,203,179,0.32); line-height: 1.8; max-width: 260px; }
-    .footer-col-title {
+    .footer-brand-logo { height: 52px; width: auto; display: block; margin-bottom: 2rem; }
+    .footer-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: var(--sand); color: var(--text-dark);
+      border-radius: 100px; padding: 0.75rem 1.5rem;
+      font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+    }
+    .footer-cta-btn:hover { background: var(--sand-light); transform: translateY(-2px); }
+    .footer-nav-title {
       font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
       font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(217,203,179,0.45); margin-bottom: 1.5rem;
+      color: rgba(217,203,179,0.45); margin-bottom: 1.4rem;
     }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .footer-links a, .social-links a {
-      color: rgba(217,203,179,0.32); text-decoration: none;
-      font-size: 0.88rem; transition: color 0.3s;
+    .footer-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-nav-links a {
+      display: flex; align-items: center; gap: 0.65rem;
+      color: rgba(217,203,179,0.5); text-decoration: none;
+      font-size: 0.9rem; transition: color 0.2s;
     }
-    .footer-links a:hover, .social-links a:hover { color: var(--sand); }
-    .social-links { display: flex; flex-direction: column; gap: 0.7rem; }
-    .social-links a { display: flex; align-items: center; gap: 0.5rem; }
+    .footer-nav-links a:hover { color: var(--sand); }
+    .footer-nav-links svg { opacity: 0.5; flex-shrink: 0; }
+    .footer-nav-links a:hover svg { opacity: 1; }
     .footer-bottom {
       padding-top: 2rem; border-top: 1px solid rgba(217,203,179,0.07);
       text-align: center; font-size: 0.78rem; color: rgba(217,203,179,0.22);
@@ -1059,8 +1065,8 @@
       .process-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .pakete-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { padding: 5rem 1.5rem 2rem; }
+      .footer-main { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { padding: 3.5rem 1.5rem 2rem; }
       .scroll-indicator { display: none; }
       .datenschutz-box { padding: 1.75rem 1.5rem; }
       #services { padding: 5rem 1.5rem; }
@@ -1684,40 +1690,55 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
+  <div class="footer-main">
+
+    <!-- Brand -->
     <div>
-      <div class="footer-logo">
-        <img src="logo-ts.png" alt="Tribe Studio" style="height:38px; width:auto;">
-        <span class="footer-logo-text">TRIBE STUDIO</span>
-      </div>
-      <p class="footer-desc">Cinematische Immobilienvermarktung für Makler und Bauträger, die außergewöhnlich sein wollen.</p>
+      <img src="logo-ts.png" alt="Tribe Studio" class="footer-brand-logo">
+      <a href="#kontakt" class="footer-cta-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Projekt starten
+      </a>
     </div>
+
+    <!-- Quick Links -->
     <div>
-      <p class="footer-col-title">Navigation</p>
-      <ul class="footer-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pakete">Pakete</a></li>
-        <li><a href="#process">Prozess</a></li>
+      <p class="footer-nav-title">Quick Links</p>
+      <ul class="footer-nav-links">
+        <li><a href="#angebote">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Angebote
+        </a></li>
+        <li><a href="#portfolio">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Portfolio
+        </a></li>
+        <li><a href="#ueber-uns">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Über uns
+        </a></li>
+        <li><a href="#prozess">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Prozess
+        </a></li>
+        <li><a href="#kontakt">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Kontakt
+        </a></li>
       </ul>
     </div>
+
+    <!-- Socials -->
     <div>
-      <p class="footer-col-title">Kontakt</p>
-      <ul class="footer-links">
-        <li><a href="mailto:support@tribestudio.de">support@tribestudio.de</a></li>
-        <li><a href="tel:+4917645688302">+49 176 45688302</a></li>
-        <li><a href="#pakete">Angebot holen</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="footer-col-title">Social</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <p class="footer-nav-title">Socials</p>
+      <ul class="footer-nav-links">
+        <li><a href="https://www.instagram.com/tribestudio.de/" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           Instagram
-        </a>
-      </div>
+        </a></li>
+      </ul>
     </div>
+
   </div>
   <div class="footer-bottom">
     <p>© 2026 Tribe Studio. Alle Rechte vorbehalten. | <a href="#" onclick="openImpressum(); return false;">Impressum</a> | <a href="#" onclick="openDatenschutz(); return false;">Datenschutz</a></p>
