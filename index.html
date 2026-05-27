@@ -1977,7 +1977,7 @@
   document.getElementById('kontakt-modal').addEventListener('click', function(e) {
     if (e.target === this) closeKontakt();
   });
-  try { emailjs.init({ publicKey: '_gUKeq7WfCAmR4Y80' }); } catch(e) {}
+  emailjs.init('_gUKeq7WfCAmR4Y80');
 
   function openSuccessPopup() {
     document.getElementById('success-popup').classList.add('active');
@@ -1997,6 +1997,7 @@
     var msg     = form.querySelector('[name="k_nachricht"]').value.trim();
     closeKontakt();
     setTimeout(openSuccessPopup, 320);
+    emailjs.init('_gUKeq7WfCAmR4Y80');
     emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
       from_name: name,
       reply_to:  email,
