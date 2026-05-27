@@ -271,10 +271,27 @@
     }
 
     @media (max-width: 900px) {
-      .paket-row { grid-template-columns: 60px 1fr; grid-template-rows: auto auto auto; gap: 1.5rem; }
-      .paket-cta-wrap { grid-column: 2; }
-      .paket-3d-haustour { grid-column: 2; }
-      #pakete { padding: 6rem 2rem; }
+      #hero { padding: 0 2rem 8rem; }
+      .paket-row {
+        display: flex; flex-direction: column;
+        gap: 1.25rem; padding: 2rem 0;
+      }
+      .paket-num { font-size: 3rem; }
+      .paket-media { height: 160px; }
+      .paket-features { padding: 0; }
+      .paket-cta-wrap { width: 100%; }
+      .paket-cta { display: block; text-align: center; }
+      #pakete { padding: 6rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-headline { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .prozess-steps { grid-template-columns: 1fr; }
+      nav { grid-template-columns: auto 1fr; padding: 0.75rem 1.5rem; }
+      .nav-logo-word { display: none; }
+      .nav-logo img { height: 42px; transform: none; }
+      .hamburger { justify-self: end; }
+      .mobile-overlay a { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+      .mobile-overlay { gap: clamp(1.25rem, 4vh, 2rem); }
     }
 
     /* ===== PROZESS ===== */
