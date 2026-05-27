@@ -1977,7 +1977,7 @@
   document.getElementById('kontakt-modal').addEventListener('click', function(e) {
     if (e.target === this) closeKontakt();
   });
-  emailjs.init({ publicKey: '_gUKeq7WfCAmR4Y80' });
+  try { emailjs.init({ publicKey: '_gUKeq7WfCAmR4Y80' }); } catch(e) {}
 
   function openSuccessPopup() {
     document.getElementById('success-popup').classList.add('active');
@@ -1994,23 +1994,15 @@
     const email   = this.querySelector('[name="k_email"]').value.trim();
     const betreff = this.querySelector('[name="k_betreff"]').value.trim();
     const msg     = this.querySelector('[name="k_nachricht"]').value.trim();
-    const btn     = this.querySelector('.kontakt-submit');
-    btn.disabled  = true;
-    btn.textContent = 'Wird gesendet…';
     closeKontakt();
     setTimeout(() => openSuccessPopup(), 320);
-    emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
-      from_name:  name,
-      reply_to:   email,
-      betreff:    betreff || 'Kontaktanfrage',
-      nachricht:  msg,
-      name:       name,
-      email:      email,
-      firma:      '–',
-      telefon:    '–',
-    }).catch(() => {
-      console.warn('EmailJS send failed for Kontakt form');
-    });
+    try {
+      emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
+        from_name: name, reply_to: email,
+        betreff:   betreff || 'Kontaktanfrage',
+        nachricht: msg, name: name, email: email, firma: '–', telefon: '–',
+      }).catch(() => {});
+    } catch(e) {}
   });
 </script>
 
