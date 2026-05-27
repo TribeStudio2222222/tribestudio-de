@@ -1997,14 +1997,17 @@
     var msg     = form.querySelector('[name="k_nachricht"]').value.trim();
     closeKontakt();
     setTimeout(openSuccessPopup, 320);
-    try {
-      emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
-        from_name: name,
-        reply_to:  email,
-        betreff:   betreff || 'Kontaktanfrage',
-        nachricht: msg,
-      }).catch(function(){});
-    } catch(err) {}
+    emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
+      from_name: name,
+      reply_to:  email,
+      betreff:   betreff || 'Kontaktanfrage',
+      nachricht: msg,
+    }).then(function() {
+      console.log('EmailJS: gesendet');
+    }).catch(function(err) {
+      console.error('EmailJS Fehler:', JSON.stringify(err));
+      alert('EmailJS Fehler: ' + JSON.stringify(err));
+    });
   }
 </script>
 
