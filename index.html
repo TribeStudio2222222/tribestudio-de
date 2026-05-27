@@ -1998,22 +1998,11 @@
     closeKontakt();
     setTimeout(openSuccessPopup, 320);
     try {
-      emailjs.send('service_ahe1wrr', 'template_19ujqhs', {
+      emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
         from_name: name,
         reply_to:  email,
-        name:      name,
-        email:     email,
-        nachricht: msg,
         betreff:   betreff || 'Kontaktanfrage',
-        firma:     '–',
-        telefon:   '–',
-        ziel:      '–',
-        paket:     '–',
-        objekttyp: '–',
-        ort:       '–',
-        qm:        '–',
-        addons:    '–',
-        branding:  '–',
+        nachricht: msg,
       }).catch(function(){});
     } catch(err) {}
   }
