@@ -391,25 +391,30 @@
     }
     .erfolge-cta-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
 
-    /* Phone mockup */
+    /* Phone compositing */
     .erfolge-phone-wrap {
       position: relative;
       margin: 2rem 0 0;
       display: flex; justify-content: center;
     }
-    .phone-mockup {
-      width: clamp(200px, 22vw, 300px);
-      aspect-ratio: 9 / 19.5;
-      border-radius: 36px;
-      border: 8px solid rgba(255,255,255,0.12);
-      background: #000;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 40px 100px rgba(0,0,0,0.7);
+    .phone-comp {
       position: relative;
+      width: clamp(300px, 38vw, 520px);
     }
-    .phone-mockup-video {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+    .phone-comp-img {
+      position: relative;
+      width: 100%; display: block;
+      z-index: 2;
+    }
+    .phone-comp-video {
+      position: absolute;
+      top: 14.4%;
+      left: 35.3%;
+      width: 29.6%;
+      height: 65%;
+      object-fit: cover;
+      border-radius: 10px;
+      z-index: 1;
     }
     .erfolge-phone-fade {
       position: absolute;
@@ -417,7 +422,7 @@
       height: 40%;
       background: linear-gradient(to bottom, transparent 0%, var(--black) 100%);
       pointer-events: none;
-      z-index: 2;
+      z-index: 3;
     }
     .erfolge-cta {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -1195,12 +1200,13 @@
     </div>
     <h2 class="erfolge-headline">Ergebnisse für Makler,<br>die <em>wirklich</em> verkaufen.</h2>
 
-    <!-- MITTE: Phone Mockup mit Video -->
+    <!-- MITTE: Phone Compositing -->
     <div class="erfolge-phone-wrap">
-      <div class="phone-mockup">
-        <video class="phone-mockup-video" autoplay muted loop playsinline preload="auto">
+      <div class="phone-comp">
+        <video class="phone-comp-video" autoplay muted loop playsinline preload="auto">
           <source src="https://res.cloudinary.com/dihv1z1t4/video/upload/q_auto/v1778008002/3D_Geb%C3%A4udereinigung_sq0ruh.mp4" type="video/mp4">
         </video>
+        <img src="phone-mask.png" alt="Phone" class="phone-comp-img">
       </div>
       <div class="erfolge-phone-fade"></div>
     </div>
