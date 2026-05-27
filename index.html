@@ -1997,6 +1997,8 @@
     const btn     = this.querySelector('.kontakt-submit');
     btn.disabled  = true;
     btn.textContent = 'Wird gesendet…';
+    closeKontakt();
+    setTimeout(() => openSuccessPopup(), 320);
     emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
       from_name:  name,
       reply_to:   email,
@@ -2006,13 +2008,8 @@
       email:      email,
       firma:      '–',
       telefon:    '–',
-    }).then(() => {
-      closeKontakt();
-      setTimeout(() => openSuccessPopup(), 300);
     }).catch(() => {
-      btn.disabled = false;
-      btn.textContent = 'Nachricht senden →';
-      alert('Senden fehlgeschlagen. Bitte versuche es erneut oder schreib uns direkt an support@tribestudio.de.');
+      console.warn('EmailJS send failed for Kontakt form');
     });
   });
 </script>
