@@ -1997,13 +1997,12 @@
     var msg     = form.querySelector('[name="k_nachricht"]').value.trim();
     closeKontakt();
     setTimeout(openSuccessPopup, 320);
-    emailjs.init('_gUKeq7WfCAmR4Y80');
     emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
       from_name: name,
       reply_to:  email,
       betreff:   betreff || 'Kontaktanfrage',
       nachricht: msg,
-    }).then(function() {
+    }, { publicKey: '_gUKeq7WfCAmR4Y80' }).then(function() {
       console.log('EmailJS: gesendet');
     }).catch(function(err) {
       console.error('EmailJS Fehler:', JSON.stringify(err));
