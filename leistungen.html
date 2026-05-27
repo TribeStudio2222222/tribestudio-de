@@ -424,9 +424,12 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .nav-links, .nav-email { display: none; }
-      .hamburger { display: flex; }
-      nav { grid-template-columns: auto 1fr auto; }
+      .hamburger { display: flex; justify-self: end; }
+      nav { grid-template-columns: auto 1fr; padding: 0.75rem 1.5rem; }
       .nav-right { display: none; }
+      .nav-logo { justify-content: flex-start; gap: 0; }
+      .nav-logo-word { display: none; }
+      .nav-logo img { height: 54px; transform: none; }
       #hero { padding: 0 2rem 8rem; }
       .prozess-steps { grid-template-columns: 1fr 1fr; }
       #prozess { padding: 8rem 2rem 12rem; }
