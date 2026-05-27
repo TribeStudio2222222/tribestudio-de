@@ -1061,42 +1061,82 @@
       .ueber-img-wrap { aspect-ratio: 16/9; }
     }
     @media (max-width: 768px) {
-      nav { grid-template-columns: 1fr auto; padding: 1rem 1.5rem; }
+      /* Nav */
+      nav { grid-template-columns: auto 1fr; padding: 0.75rem 1.5rem; gap: 0; }
       .nav-links, .nav-right { display: none; }
-      .hamburger { display: flex; }
+      .hamburger { display: flex; justify-self: end; }
+      .nav-logo { justify-content: flex-start; gap: 0; }
+      .nav-logo-word { display: none; }
+      .nav-logo img { height: 42px; transform: none; }
+
+      /* Hero */
       section { padding: 5rem 1.5rem; }
-      #hero { padding: 0 1.5rem; }
+      #hero { padding: 0 1.5rem; min-height: 100svh; }
       #booking { padding: 6rem 1.5rem; }
-      .hero-headline { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.75rem; }
+      .hero-headline { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.75rem; line-height: 1.05; }
       .hero-location { margin-bottom: 1.25rem; }
-      .hero-bullets { gap: 0.5rem; margin-bottom: 1.75rem; }
+      .hero-bullets { gap: 0.65rem; margin-bottom: 1.75rem; }
+      .hero-bullets li { font-size: 0.85rem; }
       .hero-cta-row { flex-direction: column; gap: 0.75rem; }
       .hero-cta-row .btn-primary,
       .hero-cta-row .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
-      #angebote { padding: 5rem 1.5rem; }
-      .angebote-list { grid-template-columns: 1fr; }
-      .angebot-content { padding: 1.75rem; }
-      #erfolge { padding: 5rem 1.5rem; }
+
+      /* Erfolge */
+      #erfolge { padding: 4rem 1.5rem 6rem; }
       .erfolge-inner { grid-template-columns: 1fr; }
-      .phone-main { width: clamp(180px, 52vw, 240px); }
-      .phone-thumb { width: 40px; }
+      .erfolge-headline { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+      .phone-comp { width: clamp(220px, 65vw, 300px); }
+
+      /* Portfolio */
       #portfolio { padding: 5rem 1.5rem; }
-      .portfolio-accordion { max-width: 100%; height: clamp(340px, 90vw, 500px); gap: 0.5rem; }
-      .acc-card { border-radius: 14px; }
+      .portfolio-main-headline { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+      .portfolio-sub { font-size: 1rem; }
+      .portfolio-accordion { max-width: 100%; height: clamp(280px, 85vw, 420px); gap: 0.4rem; }
+      .acc-card { border-radius: 12px; }
       .acc-card.active { flex: 3; }
+      .acc-overlay { padding: 0.85rem 1rem; gap: 0.2rem; }
+      .acc-service { font-size: 0.6rem; }
+      .acc-title { font-size: 1rem; }
+
+      /* Angebote */
+      #angebote { padding: 4rem 1.5rem; }
+      .angebote-headline { font-size: clamp(2rem, 7vw, 3rem); }
+      .angebote-list { grid-template-columns: 1fr; gap: 1rem; }
+      .angebot-row:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .angebot-row.popular { margin-top: 0; margin-bottom: 0; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+      .angebot-content { padding: 1.5rem; }
+      .angebot-deco { height: 180px; }
+      .angebot-row.popular .angebot-deco { height: 200px; }
+
+      /* Prozess */
       .process-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .pakete-grid { grid-template-columns: 1fr; }
-      .footer-main { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { padding: 3.5rem 1.5rem 2rem; }
-      .scroll-indicator { display: none; }
-      .datenschutz-box { padding: 1.75rem 1.5rem; }
+
+      /* Services */
       #services { padding: 5rem 1.5rem; }
-      #ueber-uns { padding: 5rem 1.5rem; }
-      #testimonials { padding: 5rem 1.5rem; }
       .service-item { grid-template-columns: 2.5rem 1fr; gap: 1.25rem; padding: 1.5rem 0.5rem; }
       .service-arrow { display: none; }
       .service-title { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+
+      /* Über uns */
+      #ueber-uns { padding: 5rem 1.5rem; }
+      .ueber-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .ueber-img-wrap { aspect-ratio: 16/9; }
+
+      /* Testimonials */
+      #testimonials { padding: 5rem 1.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      /* FAQ */
+      .faq-contact-card { flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 1.5rem; }
+
+      /* Footer */
+      .footer-main { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { padding: 3.5rem 1.5rem 2rem; }
+      .pakete-grid { grid-template-columns: 1fr; }
+
+      /* Misc */
+      .scroll-indicator { display: none; }
+      .datenschutz-box { padding: 1.75rem 1.5rem; }
       .form-group input, .form-group textarea { font-size: 16px; }
     }
   </style>
