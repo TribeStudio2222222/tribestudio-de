@@ -1988,22 +1988,23 @@
     document.body.style.overflow = '';
   }
 
-  document.getElementById('kontakt-form').addEventListener('submit', function(e) {
+  function handleKontaktSubmit(e) {
     e.preventDefault();
-    const name    = this.querySelector('[name="k_name"]').value.trim();
-    const email   = this.querySelector('[name="k_email"]').value.trim();
-    const betreff = this.querySelector('[name="k_betreff"]').value.trim();
-    const msg     = this.querySelector('[name="k_nachricht"]').value.trim();
+    var form    = document.getElementById('kontakt-form');
+    var name    = form.querySelector('[name="k_name"]').value.trim();
+    var email   = form.querySelector('[name="k_email"]').value.trim();
+    var betreff = form.querySelector('[name="k_betreff"]').value.trim();
+    var msg     = form.querySelector('[name="k_nachricht"]').value.trim();
     closeKontakt();
-    setTimeout(() => openSuccessPopup(), 320);
+    setTimeout(openSuccessPopup, 320);
     try {
       emailjs.send('service_ahe1wrr', 'template_yw8vc6q', {
         from_name: name, reply_to: email,
         betreff:   betreff || 'Kontaktanfrage',
         nachricht: msg, name: name, email: email, firma: '–', telefon: '–',
-      }).catch(() => {});
-    } catch(e) {}
-  });
+      }).catch(function(){});
+    } catch(err) {}
+  }
 </script>
 
 <!-- KONTAKT MODAL -->
@@ -2017,7 +2018,7 @@
       <h2 class="kontakt-modal-title">Schreib uns direkt.</h2>
       <p class="kontakt-modal-sub">Wir antworten innerhalb von 24 Stunden.</p>
     </div>
-    <form id="kontakt-form" class="kontakt-modal-form" novalidate>
+    <form id="kontakt-form" class="kontakt-modal-form" novalidate onsubmit="handleKontaktSubmit(event)">
       <div class="kontakt-row">
         <div class="kontakt-group">
           <label for="k_name">Name *</label>
