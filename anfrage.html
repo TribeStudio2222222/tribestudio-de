@@ -339,6 +339,7 @@
       transition: background 0.2s, transform 0.2s; letter-spacing: 0.02em;
     }
     .btn-submit:hover { background: var(--sand-light); transform: translateY(-2px); }
+    .field-error { font-size: 0.75rem; color: #e05252; margin-top: 0.3rem; display: block; }
     .form-note { font-size: 0.78rem; color: rgba(217,203,179,0.35); line-height: 1.5; }
 
     /* Success */
@@ -951,9 +952,38 @@
     const branding = (document.querySelector('input[name="branding"]:checked') || {}).value || 'Kein Branding Video';
 
     // Kontaktdaten
-    const name      = document.getElementById('name').value;
+    const name      = document.getElementById('name').value.trim();
     const firma     = document.getElementById('firma').value || '–';
-    const email     = document.getElementById('email').value;
+    const email     = document.getElementById('email').value.trim();
+
+    // Validierung Name + E-Mail
+    const nameEl  = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    let valid = true;
+    [nameEl, emailEl].forEach(el => {
+      el.style.borderColor = '';
+      const err = el.parentNode.querySelector('.field-error');
+      if (err) err.remove();
+    });
+    if (!name) {
+      nameEl.style.borderColor = '#e05252';
+      const e1 = document.createElement('span');
+      e1.className = 'field-error';
+      e1.textContent = 'Name ist erforderlich.';
+      nameEl.parentNode.appendChild(e1);
+      nameEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      valid = false;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailEl.style.borderColor = '#e05252';
+      const e2 = document.createElement('span');
+      e2.className = 'field-error';
+      e2.textContent = email ? 'Bitte gültige E-Mail eingeben.' : 'E-Mail ist erforderlich.';
+      emailEl.parentNode.appendChild(e2);
+      if (valid) emailEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      valid = false;
+    }
+    if (!valid) return;
     const telefon   = document.getElementById('telefon').value || '–';
     const nachricht = document.getElementById('nachricht').value || '–';
 
